@@ -1,0 +1,13 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+const root=process.cwd();
+const source=await fs.readFile(path.join(root,'src/lib/articles.ts'),'utf8');
+const prefix='export const articles:Article[]=';
+const data=JSON.parse(source.slice(source.indexOf(prefix)+prefix.length,source.indexOf(';\nexport const getArticle')));
+const urls=[...new Set(data.flatMap(a=>[a.cover,...(a.blocks||[]).filter(b=>b.type==='image').map(b=>b.src)]).filter(s=>s.startsWith('https://')))];
+const folder=path.join(root,'public/sites/uniride/blog');await fs.mkdir(folder,{recursive:true});
+const mapping={};const queue=[...urls];const failures=[];
+await Promise.all(Array.from({length:5},async()=>{while(queue.length){const url=queue.shift();try{const response=await fetch(url,{signal:AbortSignal.timeout(10000)});if(!response.ok)throw new Error('HTTP '+response.status);const type=response.headers.get('content-type')||'';if(!type.startsWith('image/'))throw new Error('Not an image');const extension=type.includes('png')?'png':type.includes('webp')?'webp':type.includes('gif')?'gif':'jpg';const name=createHash('sha256').update(url).digest('hex').slice(0,20)+'.'+extension;await fs.writeFile(path.join(folder,name),new Uint8Array(await response.arrayBuffer()));mapping[url]='/sites/uniride/blog/'+name;}catch(error){failures.push({url,error:String(error)});}}}));
+await fs.mkdir(path.join(root,'docs/research/blog'),{recursive:true});await fs.writeFile(path.join(root,'docs/research/blog/image-map.json'),JSON.stringify(mapping,null,2));await fs.writeFile(path.join(root,'docs/research/blog/image-failures.json'),JSON.stringify(failures,null,2));
+console.log(JSON.stringify({downloaded:Object.keys(mapping).length,total:urls.length,failed:failures.length}));
