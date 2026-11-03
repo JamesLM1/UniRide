@@ -1,0 +1,28 @@
+{
+  "name": "uniride",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "@supabase/supabase-js": "2.118.0",
+    "@supabase/ssr": "0.12.7",
+    "lucide-react": "1.66.0",
+    "zod": "4.6.7",
+    "gsap": "3.15.0",
+    "qrcode.react": "4.2.0"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0"
+  }
+}

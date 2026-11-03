@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export function Brand({light=false,mark=true}:{light?:boolean;mark?:boolean}){return <Link href="/" className={'brand '+(light?'light':'')} aria-label="UniRide, inicio">{mark&&<span className="brand-emblem"><img src="/images/uniride-symbol.png" alt="" aria-hidden="true" width={36} height={36}/></span>}<span className="brand-wordmark">Uni<span>Ride</span></span></Link>;}

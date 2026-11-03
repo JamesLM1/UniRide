@@ -1,0 +1,6 @@
+import {NextResponse} from 'next/server';
+import {z} from 'zod';
+import {isSameOriginRequest} from '@/lib/request-origin.mjs';
+import {serverClient} from '@/lib/supabase/server';
+const schema=z.object({name:z.string().trim().min(1).max(80),email:z.email().max(254),privacy:z.literal(true),marketing:z.boolean(),source:z.enum(['web','calculadora','guia-plan-b','contacto']),website:z.string().max(200).default('')});
+export async function POST(req:Request){if(!isSameOriginRequest(req))return NextResponse.json({error:'Origen no permitido.'},{status:403});if(Number(req.headers.get('content-length')||0)>5000)return NextResponse.json({error:'Solicitud demasiado grande.'},{status:413});let input;try{input=schema.parse(await req.json());}catch{return NextResponse.json({error:'Revisa el nombre, correo y consentimiento.'},{status:400});}const sb=await serverClient();const{error}=await sb.rpc('submit_lead',{p_name:input.name,p_email:input.email,p_privacy_consent:input.privacy,p_marketing_opt_in:input.marketing,p_source:input.source,p_website:input.website});if(error)return NextResponse.json({error:'No pudimos guardar la solicitud. Inténtalo más tarde.'},{status:503});return NextResponse.json({accepted:true});}

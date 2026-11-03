@@ -1,0 +1,8 @@
+import type {Metadata} from 'next';
+import Link from 'next/link';
+import {notFound} from 'next/navigation';
+import {ArrowUpRight,ArrowLeft,Check} from 'lucide-react';
+import {features} from '@/lib/features';
+export function generateStaticParams(){return features.map(f=>({slug:f.slug}));}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const{slug}=await params;const f=features.find(f=>f.slug===slug);return f?{title:f.subtitle,description:f.description,alternates:{canonical:'/funciones/'+f.slug}}:{title:'Función no encontrada'};}
+export default async function Page({params}:{params:Promise<{slug:string}>}){const{slug}=await params;const f=features.find(f=>f.slug===slug);if(!f)notFound();return <main id="contenido" className="container replica-page"><section className="page-intro"><Link href="/#funcionalidades" className="back-link"><ArrowLeft size={14}/> Funcionalidades</Link><div className="eyebrow">UNIRIDE · FUNCIÓN {f.number}</div><h1>{f.title}</h1><p>{f.description}</p><div className="r-actions" style={{marginTop:28}}><Link className="r-button" href={f.href}>{f.cta}<ArrowUpRight size={17}/></Link><Link className="r-button secondary" href="/demo">Probar la demo</Link></div></section><section className="r-section" style={{paddingTop:0}}><h2>{f.subtitle}</h2><div className="function-detail-steps">{f.steps.map((text,i)=><article key={text}><span>0{i+1}</span><p>{text}</p><Check size={18}/></article>)}</div><div className="notice"><p>UniRide es un prototipo académico. No procesa pagos ni verifica antecedentes o licencias. No garantiza seguridad, disponibilidad ni puntualidad. Consulta el alcance del proyecto antes de coordinar.</p></div></section></main>}
