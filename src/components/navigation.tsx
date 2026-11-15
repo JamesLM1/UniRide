@@ -3,7 +3,8 @@ import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import {useState,useEffect,useRef} from 'react';
 import {Menu,X,ArrowUpRight,Download,Moon,Sun,Monitor,Languages,ArrowRight,BookOpen,Calculator,MapPin} from 'lucide-react';
-import {mobilityTestCta, mobilityTestURL} from './sites/cobrapp/mobility-test';
+const appDownloadURL = 'https://www.figma.com/design/EHMJtEVMXvPWpxgxVKUQ2Z/Untitled?node-id=0-1&t=reCxmGRqsSyahWq7-1';
+const appDownloadLabels = {es: 'Descargar la app', en: 'Download the app', pt: 'Baixar o app'} as const;
 import {Brand} from './brand';
 
 export function Navigation(){
@@ -27,7 +28,7 @@ export function Navigation(){
    {!isTestLanding&&<nav className="hybrid-nav" aria-label="Navegación principal">{links.map((href,i)=><Link key={href} href={href} aria-current={active(href)?'page':undefined}>{text.nav[i]}</Link>)}</nav>}
    <div className="hybrid-actions">{!isTestLanding&&<div className="hybrid-language" ref={language}><button className="hybrid-icon" aria-label="Elegir idioma" aria-expanded={languageOpen} aria-controls="idiomas-uniride" onClick={()=>setLanguageOpen(!languageOpen)}><Languages size={17}/><small>{locale.toUpperCase()}</small></button>{languageOpen&&<nav id="idiomas-uniride" className="hybrid-language-panel" aria-label="Idiomas"><Link href="/" hrefLang="es" onClick={()=>setLanguageOpen(false)} aria-current={locale==='es'?'page':undefined}>Español <span>ES</span></Link><Link href="/pt" hrefLang="pt" onClick={()=>setLanguageOpen(false)} aria-current={locale==='pt'?'page':undefined}>Português <span>PT</span></Link><Link href="/en" hrefLang="en" onClick={()=>setLanguageOpen(false)} aria-current={locale==='en'?'page':undefined}>English <span>EN</span></Link></nav>}</div>}
     <button className="hybrid-icon hybrid-theme" aria-label={'Cambiar tema. Actual: '+(theme==='system'?'sistema':theme==='dark'?'oscuro':'claro')} onClick={cycleTheme} title="Cambiar tema">{theme==='system'?<Monitor size={17}/>:theme==='dark'?<Moon size={17}/>:<Sun size={17}/>}</button>
-    <a href={mobilityTestURL} className="hybrid-test" onClick={()=>setLanguageOpen(false)}>{mobilityTestCta[locale]}<ArrowRight size={15} aria-hidden="true"/></a>
+    <a href={appDownloadURL} target="_blank" rel="noopener noreferrer" className="hybrid-test" onClick={()=>setLanguageOpen(false)}>{appDownloadLabels[locale]}<Download size={15} aria-hidden="true"/></a>
     {!isTestLanding&&<button ref={menuButton} className={'hybrid-menu-toggle '+(open?'is-open':'')} aria-label={open?text.close:text.menu} aria-expanded={open} aria-controls="mobile-menu-uniride" onClick={()=>setOpen(!open)}><span/><span/></button>}
    </div><div className="hybrid-progress" style={{transform:'scaleX('+progress+')'}}/>
   </div></header>

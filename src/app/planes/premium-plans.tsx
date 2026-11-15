@@ -1,13 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import {
   ArrowRight, BadgeCheck, BellRing, CalendarDays,
-  Check, ChevronRight, Clock3, Crown, Gem, HeartHandshake,
-  MapPinned, Route, ShieldCheck, Sparkles, Star,
-  TrendingUp, Users, Wallet, X,
+  Check, Clock3, Crown, Gem, Route, ShieldCheck,
+  Sparkles, Star, Users, Wallet, X,
 } from 'lucide-react';
 import { mobilityTestURL } from '@/components/sites/cobrapp/mobility-test';
 import styles from './premium-plans.module.css';
@@ -96,12 +94,6 @@ const faqs = [
   },
 ];
 
-const featuresTitle = [
-  { icon: MapPinned, title: 'Movilidad universitaria' },
-  { icon: HeartHandshake, title: 'Viajes compartidos' },
-  { icon: ShieldCheck, title: 'Planificación informada' },
-  { icon: TrendingUp, title: 'Crecimiento inteligente' },
-];
 
 export function PremiumPlans() {
   const [period, setPeriod] = useState<Period>('monthly');
@@ -110,39 +102,10 @@ export function PremiumPlans() {
 
   return (
     <div className={styles.page}>
-      <section className={styles.hero} aria-labelledby="planes-title">
-        <div className={styles.heroGlow} aria-hidden="true" />
-        <div className={styles.heroInner}>
-          <div className={styles.heroCopy}>
-            <span className={styles.eyebrow}><Sparkles size={15} /> UNIRIDE · PROPUESTA PREMIUM</span>
-            <h1 id="planes-title">Tu camino al campus, <em>a tu manera.</em></h1>
-            <p>Organiza tus viajes, planifica mejor tu semana y descubre cómo la movilidad compartida puede evolucionar con herramientas inteligentes.</p>
-            <div className={styles.heroActions}>
-              <a href="#comparar-planes" className={styles.heroPrimary}>Explorar planes <ArrowRight size={18} /></a>
-              <a href={mobilityTestURL} className={styles.heroSecondary} target="_blank" rel="noopener noreferrer">Test gratuito <ChevronRight size={17} /></a>
-            </div>
-            <p className={styles.heroDisclaimer}>Precios y beneficios referenciales. Proyecto académico UniRide.</p>
-          </div>
-          <div className={styles.heroVisual}>
-            <div className={styles.photoFrame}>
-              <Image src="/images/estudiante-campus.webp" width={740} height={600} alt="Estudiante universitario organizando un viaje cerca del campus" className={styles.campusImage} priority />
-            </div>
-            <div className={styles.floatingInfo}><MapPinned size={19} /><span>Tu próxima ruta empieza aquí</span></div>
-            <div className={styles.orbit} aria-hidden="true"><Route size={22} /></div>
-          </div>
-        </div>
-        <div className={styles.heroFeatureRow}>
-          {featuresTitle.map(item => {
-            const Icon = item.icon;
-            return <div key={item.title}><Icon size={22} aria-hidden="true"/><span>{item.title}</span></div>;
-          })}
-        </div>
-      </section>
-
       <section id="comparar-planes" className={styles.pricing} aria-labelledby="pricing-title">
         <div className={styles.sectionIntro}>
           <span className={styles.overline}>PLANES PENSADOS PARA TI</span>
-          <h2 id="pricing-title">Elige el plan ideal para <span>tu vida universitaria</span></h2>
+          <h1 id="pricing-title">Elige el plan ideal para <span>tu vida universitaria</span></h1>
           <p>Compara las tres propuestas de UniRide. Smart, Pro y Elite ofrecen distintos niveles de planificación y servicios previstos.</p>
           <div className={styles.periodSwitch} role="group" aria-label="Periodo de comparación de precios">
             <button type="button" className={period === 'monthly' ? styles.activePeriod : ''} aria-pressed={period === 'monthly'} onClick={() => setPeriod('monthly')}>Pago mensual</button>
