@@ -2,13 +2,13 @@ import type {Metadata} from 'next';
 import Link from 'next/link';
 import {QRCodeSVG} from 'qrcode.react';
 import {Monitor,Download,Route,Plus,ArrowRight} from 'lucide-react';
-import {AppPhonePreview} from '@/components/product-preview';
+import {PrototypePhone} from '@/components/prototype-phone';
 import {OfflineGuide} from '@/components/sites/cobrapp/offline-guide';
 import {siteURL} from '@/lib/config';
 import styles from '@/components/sites/cobrapp/subpages.module.css';
 export const metadata:Metadata={title:'Abre UniRide y descarga tu plan B',description:'Accede a la web o explora la demo de UniRide. Descarga gratis el checklist de movilidad universitaria.',alternates:{canonical:'/descargas'}};
 export default function DownloadsPage(){const local=/localhost|127\.0\.0\.1/.test(siteURL);return <main id="contenido" className="replica-page">
- <div className="container reference-subpage-top"><nav className="reference-subpage-crumb" aria-label="Migas de pan"><Link href="/">Inicio</Link><span>›</span><span>Descargas</span></nav><div className="reference-subpage-hero downloads-reference-hero"><div className="reference-subpage-copy"><h1>Lleva <span>UniRide</span><br/>a tu próximo viaje</h1><p className="reference-subpage-lead">Elige cómo empezar desde tu navegador: coordina tu ruta, explora la demo o descarga la guía gratuita. Web adaptable al celular, sin instalar una app.</p></div><div className="downloads-reference-phone"><AppPhonePreview/></div></div></div>
+ <div className="container reference-subpage-top"><nav className="reference-subpage-crumb" aria-label="Migas de pan"><Link href="/">Inicio</Link><span>›</span><span>Descargas</span></nav><div className="reference-subpage-hero downloads-reference-hero"><div className="reference-subpage-copy"><h1>Lleva <span>UniRide</span><br/>a tu próximo viaje</h1><p className="reference-subpage-lead">Elige cómo empezar desde tu navegador: coordina tu ruta, explora la demo o descarga la guía gratuita. Web adaptable al celular, sin instalar una app.</p></div><div className="downloads-reference-phone"><PrototypePhone screen="inicio" className="download-phone" alt="Pantalla de inicio del prototipo de UniRide"/></div></div></div>
  <section className="download-reference-platforms"><div className="container"><div className="download-reference-grid">
   {[{Icon:Monitor,title:'Versión web',text:'Accede a las rutas, completa tu perfil y revisa tus solicitudes. Requiere conexión e inicio de sesión.',path:'/app/rutas',cta:'Abrir versión web'},
     {Icon:Route,title:'Demo interactiva',text:'Explora el recorrido con personajes y viajes ficticios. Prueba las solicitudes sin crear una cuenta.',path:'/demo',cta:'Probar la demo'},

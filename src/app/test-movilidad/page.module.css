@@ -1,0 +1,101 @@
+.landing { background: var(--paper); }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 88px);
+  padding: clamp(52px, 7vw, 108px) max(24px, calc((100vw - 1144px) / 2));
+  background: linear-gradient(118deg, var(--ur-navy), #0d497a);
+  color: #fff;
+}
+
+.kicker {
+  color: #aedcf3;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  margin-block: 16px 20px;
+  font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+}
+
+.intro h1 span { color: #5addff; }
+
+.lead {
+  max-width: 43ch;
+  color: #e3f1ff;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+}
+
+.instructions {
+  margin-top: 16px;
+  color: #c7def2;
+  font-size: .9rem;
+}
+
+.preview {
+  margin: 0;
+  padding: clamp(22px, 3.5vw, 38px);
+  border: 1px solid #b8dff3;
+  border-top: 5px solid var(--ur-cyan);
+  border-radius: 20px;
+  background: #f8fcff;
+  color: var(--ur-navy);
+  box-shadow: 0 24px 56px #03132563;
+}
+
+.caption { color: #005b98; font-size: .85rem; font-weight: 700; }
+
+.preview h2 {
+  margin-block: 12px 20px;
+  font-size: clamp(1.45rem, 2.3vw, 2rem);
+}
+
+.answers, .topics ul { padding: 0; list-style: none; }
+
+.answers { display: grid; gap: 9px; margin: 0; }
+
+.answers li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 13px;
+  border: 1px solid #c9e1ef;
+  border-radius: 9px;
+  background: #fff;
+  font-size: .95rem;
+}
+
+.answers svg { flex: none; color: #005b98; }
+
+.topics {
+  max-width: 1192px;
+  margin-inline: auto;
+  padding: 48px 24px 60px;
+}
+
+.topics ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0 0;
+}
+
+.topics li {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.topics svg { color: var(--blue); }
+.topics h3 { margin-block: 8px 6px; }
+
+@media (max-width: 720px) {
+  .hero, .topics ul { grid-template-columns: 1fr; }
+  .hero { padding-block: 44px; }
+}
