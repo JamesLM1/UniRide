@@ -6,10 +6,9 @@ node_modules/
 out/
 coverage/
 test-results/
-
 .vercel/
 *.tsbuildinfo
-.DS_Store
-Thumbs.db
-
-
+header-backups/
+auth-backups/
+interface-backups/
+ui-backups/
