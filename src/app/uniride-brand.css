@@ -81,6 +81,28 @@ html[data-theme=dark], [data-theme=dark] .replica-page, [data-theme=dark] .repli
 .mobility-hero .mobility-headline-emphasis { color: #5addff; display: block; }
 .mobility-hero .cinema-description { color: #dfedfb; margin-top: 22px; }
 .mobility-hero .r-disclaimer { color: #c5d8ec; margin-top: 22px; }
+.mobility-hero .mobility-test-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 22px;
+  padding: 12px 19px;
+  min-height: 44px;
+  border: 1px solid var(--ur-green);
+  border-radius: 8px;
+  background: var(--ur-green);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: 0 7px 20px #031a3444;
+  transition: background .2s ease, transform .2s ease;
+}
+.mobility-hero .mobility-test-cta:hover { background: var(--ur-green-hover); transform: translateY(-1px); }
+.mobility-hero .mobility-test-cta:focus-visible { outline: 3px solid #5addff; outline-offset: 3px; }
+@media(prefers-reduced-motion:reduce){.mobility-hero .mobility-test-cta{transition:none}.mobility-hero .mobility-test-cta:hover{transform:none}}
 .mobility-hero .eyebrow { color: #aedcf3; }
 .mobility-hero .hero-cursor-glow { background: radial-gradient(220px at var(--mx, 70%) var(--my, 50%), #37cdf41a, transparent 70%); }
 
