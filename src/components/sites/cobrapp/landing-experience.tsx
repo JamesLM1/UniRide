@@ -9,7 +9,6 @@ import {useCloneMotion,jumpToTour} from '@/hooks/use-clone-motion';
 import {BottomSections} from './bottom-sections';
 import {OfflineGuide} from './offline-guide';
 import {getLandingCopy} from './landing-copy';
-import {mobilityTestCta, mobilityTestURL} from './mobility-test';
 type Locale='es'|'en'|'pt';
 const proofScreens = ['viajes', 'reserva', 'viaje-finalizado'] as const;
 const tourScreens = ['programacion', 'reemplazo', 'ruta'] as const;
@@ -29,7 +28,6 @@ export function LandingExperience({locale='es'}:{locale?:Locale}){
       <h1>{c.heroLines.slice(0, -1).join(' ')} <span className="mobility-headline-emphasis">{c.heroLines.at(-1)}</span></h1>
       <p className="cinema-description">{c.heroText}</p>
       <p className="r-disclaimer">{c.disclaimer}</p>
-      <a className="mobility-test-cta" href={mobilityTestURL}>{mobilityTestCta[locale]} <ArrowRight size={16} aria-hidden="true"/></a>
      </div>
     </div>
     <div className="campus-visual">
