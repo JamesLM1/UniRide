@@ -11,7 +11,7 @@ export function Navigation(){
  const pathname=usePathname();const[open,setOpen]=useState(false);const[languageOpen,setLanguageOpen]=useState(false);const[theme,setTheme]=useState('system');const[scrolled,setScrolled]=useState(false);const[progress,setProgress]=useState(0);
  const dialog=useRef<HTMLDialogElement>(null);const menuButton=useRef<HTMLButtonElement>(null);const language=useRef<HTMLDivElement>(null);
  const locale=pathname==='/en'?'en':pathname==='/pt'?'pt':'es';
- const text=locale==='en'?{nav:['Home','Quiz','Blog','Testimonials','Plans','Contact'],close:'Close menu',menu:'Open menu'}:locale==='pt'?{nav:['Início','Teste','Blog','Depoimentos','Planos','Contato'],close:'Fechar menu',menu:'Abrir menu'}:{nav:['Inicio','Test','Blog','Testimonios','Planes','Contacto'],close:'Cerrar menú',menu:'Abrir menú'};
+ const text=locale==='en'?{nav:['Home','Lead Magnet','Blog','Testimonials','Plans','Contact'],close:'Close menu',menu:'Open menu'}:locale==='pt'?{nav:['Início','Lead Magnet','Blog','Depoimentos','Planos','Contato'],close:'Fechar menu',menu:'Abrir menu'}:{nav:['Inicio','Lead Magnet','Blog','Testimonios','Planes','Contacto'],close:'Cerrar menú',menu:'Abrir menú'};
  const home=locale==='es'?'/':'/'+locale;
  const links=[home,'/test-movilidad','/blog',home+'#testimonios','/planes','/contacto'];
  const active=(href:string)=>href==='/'||href==='/en'||href==='/pt'?pathname===href:pathname===href||pathname.startsWith(href+'/');
