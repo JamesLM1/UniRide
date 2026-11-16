@@ -11,41 +11,6 @@
 .hybrid-shell>.brand { position:relative; padding:7px 10px 9px; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
 .hybrid-shell>.brand::after { content:''; position:absolute; bottom:0; left:12px; right:12px; height:2px; background:var(--mint); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
 .hybrid-shell>.brand:hover::after { transform:scaleX(1); }
-/* Original UniRide mark in the header, on a light plate for contrast. */
-.brand.brand-logo-only {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  flex: none;
-  border: 1px solid #68b8e6;
-  border-radius: 8px;
-  background: #f7fbff;
-  overflow: hidden;
-  line-height: 0;
-}
-.hybrid-shell>.brand.brand-logo-only {
-  padding: 2px 6px;
-  border-color: #68b8e6;
-  background: #f7fbff;
-}
-.hybrid-shell>.brand.brand-logo-only::after { display: none; }
-.brand-logo-only .brand-logo-img {
-  display: block;
-  width: 55px;
-  height: 45px;
-  object-fit: contain;
-}
-.hybrid-mobile-top>.brand.brand-logo-only {
-  padding: 2px 5px;
-}
-@media(max-width:900px) {
-  .brand-logo-only .brand-logo-img {
-    width: 49px;
-    height: 40px;
-  }
-  .hybrid-shell>.brand.brand-logo-only { padding: 2px 5px; }
-}
-
 .hybrid-nav { display:flex; align-items:center; gap:3px; margin-inline:auto; }
 .hybrid-nav>a { position:relative; display:block; padding:10px 11px; border-radius:6px; white-space:nowrap; font-size:14px; font-weight:600; line-height:20px; text-decoration:none; transition:background .2s,color .2s; }
 .hybrid-nav>a:hover,.hybrid-nav>a[aria-current=page] { background:color-mix(in srgb,var(--mint) 13%,transparent); }
