@@ -1,4 +1,4 @@
-const defaultForm = 'https://docs.google.com/forms/d/e/1FAIpQLSdiS0ax9OnsiHCObwjds_rpDUpFROSVNxNAj-iT4tec7ko0lQ/viewform';
+const defaultForm = 'https://docs.google.com/forms/d/1jJbtmFa4AWw1vVNgNoYVvpM4sNwjLMEnxoxsrB9aAgc/viewform';
 
 function publishedForm(raw: string | undefined) {
   try {
@@ -17,5 +17,5 @@ function publishedForm(raw: string | undefined) {
   }
 }
 
-export const mobilityTestURL = publishedForm(process.env.NEXT_PUBLIC_UNIRIDE_TEST_FORM_URL);
+export const mobilityTestURL = publishedForm(undefined);
 export const mobilityTestCta = {es: 'Test gratuito', en: 'Free quiz', pt: 'Teste grátis'};
