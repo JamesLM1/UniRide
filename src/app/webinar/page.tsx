@@ -7,9 +7,9 @@ import {
  BellRing,CarFront,Users,Gift,ExternalLink,Timer,HeartHandshake
 } from 'lucide-react';
 import {WebinarCountdown} from './countdown';
+import {WebinarRegistrationForm} from './registration-form';
 import styles from './page.module.css';
 
-const signupURL='https://docs.google.com/forms/d/e/1FAIpQLSd4VxaOfgOSahu2oIg4FYtMARhnwKA1IfPd2NJYOLOkaOhl4Q/viewform';
 export const metadata:Metadata={
  title:'Webinar gratuito · UniRide',
  description:'Conoce cómo organizar tu movilidad al campus, comparar gastos y preparar un plan B. Webinar UniRide: 19 de noviembre de 2026, 7:00 p. m. (hora de Lima).',
@@ -67,20 +67,8 @@ export default function WebinarPage(){
       <span className={styles.signupIcon}><CalendarDays size={23}/></span>
       <div><p className={styles.signupEyebrow}>CUPOS PARA EL WEBINAR</p><h2 id="signup-title">Reserva tu lugar <span>¡gratis!</span></h2></div>
      </div>
-     <p className={styles.signupExplanation}>Completa aquí mismo el formulario oficial de Google Forms. Tu inscripción se registra únicamente cuando lo envías y Google confirma la respuesta.</p>
-     <div className={styles.formFrame}>
-      <iframe
-       src={signupURL+'?embedded=true'}
-       title="Formulario oficial de inscripción al webinar de UniRide"
-       width="100%"
-       height="580"
-       loading="lazy"
-       referrerPolicy="strict-origin-when-cross-origin"
-      />
-     </div>
-     <p className={styles.formNote}>Si no puedes ver o enviar el formulario desde aquí, ábrelo en una pestaña nueva.</p>
-     <a className={styles.openForm} href={signupURL} target="_blank" rel="noopener noreferrer">Abrir formulario oficial <ExternalLink size={16}/></a>
-     <Link href="/privacidad" className={styles.privacyLink}>Conoce nuestro aviso de privacidad</Link>
+     <p className={styles.signupExplanation}>Déjanos tus datos en este formulario para probar la experiencia de inscripción al webinar.</p>
+     <WebinarRegistrationForm/>
     </aside>
    </div>
    <svg className={styles.wave} viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
@@ -173,7 +161,7 @@ export default function WebinarPage(){
      <h2>Tu camino al campus empieza antes de salir.</h2>
      <p>Jueves 19 de noviembre, 7:00 p. m., hora de Lima.</p>
     </div>
-    <a href={signupURL} target="_blank" rel="noopener noreferrer" className={styles.finalButton}>Quiero participar <ArrowUpRight size={18}/></a>
+    <a href="#inscripcion" className={styles.finalButton}>Ir al formulario <ArrowUpRight size={18}/></a>
    </div>
   </section>
  </main>;

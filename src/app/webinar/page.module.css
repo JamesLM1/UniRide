@@ -101,3 +101,20 @@
 @media(max-width:900px){.hero{padding:52px 0 110px}.heroContent{grid-template-columns:1fr}.heroCopy h1{max-width:17ch}.heroVisual{max-width:100%}.signup{max-width:690px;width:100%;margin-inline:auto}.wave{height:110px}.themeGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.infoGrid{grid-template-columns:1fr}}
 @media(max-width:650px){.container,.heroContent{width:calc(100% - 36px)}.hero{padding:43px 0 93px}.heroCopy h1{font-size:clamp(37px,9vw,52px)}.heroVisual{height:165px}.signup{padding:21px 16px}.signupTop{gap:10px}.signup h2{font-size:25px}.formFrame iframe{height:560px}.trust .container{grid-template-columns:1fr;gap:9px}.trust .container>div{padding:14px}.themes,.organizerSection,.results,.problems{padding:55px 0}.sectionHeading{margin-bottom:28px}.themeGrid,.problemGrid,.resultsGrid{grid-template-columns:1fr}.themeCard{padding:21px}.infoCard,.resourceCard{padding:24px}.final{padding:45px 0}.final .container{flex-direction:column;align-items:flex-start}.finalButton{width:100%}}
 @media(prefers-reduced-motion:reduce){.page *{transition:none!important}}
+
+/* Formulario de inscripción propio, restaurado a partir de la tarjeta original */
+.registrationForm{display:grid;gap:13px;margin-top:19px}
+.inputWrap{display:grid;gap:6px;color:#173d5c;font-size:12px;font-weight:800}
+.inputWrap>span:first-child{display:block}
+.inputWrap em{color:#bb3555;font-style:normal}
+.inputWrap small{font-size:11px;font-weight:600;color:#62778d}
+.inputControl{display:flex;align-items:center;gap:9px;min-height:46px;padding:0 12px;border:1px solid #c7dce8;border-radius:9px;background:#f8fbff;transition:border-color .16s,box-shadow .16s}
+.inputControl svg{flex:none;color:#1084b5}
+.inputControl input{width:100%;min-width:0;min-height:44px;border:0;outline:none;background:transparent;color:#102d4c;font-size:13px;box-shadow:none}
+.inputControl input::placeholder{color:#73899d;opacity:1}
+.inputControl:focus-within{border-color:#1599cc;box-shadow:0 0 0 3px #37cdf432}
+.registrationForm .signupButton{display:flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:9px;background:linear-gradient(110deg,#048d37,#06742c);color:#fff;min-height:49px;font-size:13px;font-weight:850;margin-top:5px;cursor:pointer}
+.registrationForm .signupButton:hover{filter:brightness(1.1)}
+.formDemoSuccess{display:flex;align-items:flex-start;gap:8px;padding:12px;border-radius:10px;background:#e9f8f0;border:1px solid #b4e5cc;color:#1b6241!important;font-size:12px;line-height:1.6}
+.formDemoSuccess svg{flex:none}
+.formDisclosure{font-size:11px!important;color:#64798a!important;line-height:1.6;margin:0}
