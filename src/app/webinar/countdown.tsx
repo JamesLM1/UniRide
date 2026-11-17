@@ -1,0 +1,38 @@
+'use client';
+import {useEffect,useState} from 'react';
+import styles from './page.module.css';
+
+const EVENT_START=Date.parse('2026-11-19T19:00:00-05:00');
+function timeParts(ms:number){
+ const secs=Math.max(0,Math.ceil(ms/1000));
+ return [
+  {name:'Días',value:Math.floor(secs/86400)},
+  {name:'Horas',value:Math.floor(secs/3600)%24},
+  {name:'Minutos',value:Math.floor(secs/60)%60},
+  {name:'Segundos',value:secs%60}
+ ];
+}
+export function WebinarCountdown(){
+ const [remaining,setRemaining]=useState<number|null>(null);
+ useEffect(()=>{
+  const tick=()=>setRemaining(EVENT_START-Date.now());
+  tick();
+  const interval=window.setInterval(tick,1000);
+  return ()=>window.clearInterval(interval);
+ },[]);
+ return <div className={styles.countdown} aria-label="Cuenta regresiva para el webinar">
+  {remaining!==null&&remaining<=0
+   ?<p className={styles.countFinished} role="status">La fecha programada del webinar ya llegó. Consulta el formulario para conocer novedades.</p>
+   :<>
+    <p className={styles.countLabel}>El webinar comienza en</p>
+    <div className={styles.countGrid} role="timer" aria-live="off">
+     {(remaining===null?timeParts(0):timeParts(remaining)).map(({name,value})=>
+      <div key={name} className={styles.countCell}>
+       <strong>{remaining===null?'--':String(value).padStart(2,'0')}</strong>
+       <span>{name}</span>
+      </div>
+     )}
+    </div>
+   </>}
+ </div>;
+}
