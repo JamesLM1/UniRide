@@ -1,191 +1,180 @@
 import type {Metadata} from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
  ArrowRight,ArrowUpRight,CalendarDays,Clock3,Video,Check,
  GraduationCap,ShieldCheck,Wallet,Route,MapPin,MessagesSquare,
- BellRing,CarFront,Users,Gift,ExternalLink,BookOpen,Timer,HeartHandshake
+ BellRing,CarFront,Users,Gift,ExternalLink,Timer,HeartHandshake
 } from 'lucide-react';
 import {WebinarCountdown} from './countdown';
 import styles from './page.module.css';
 
 const signupURL='https://docs.google.com/forms/d/e/1FAIpQLSd4VxaOfgOSahu2oIg4FYtMARhnwKA1IfPd2NJYOLOkaOhl4Q/viewform';
-const blogURL='https://uniride-movilidad-universitaria.blogspot.com/';
-
 export const metadata:Metadata={
  title:'Webinar gratuito · UniRide',
- description:'Webinar UniRide: organiza tu traslado universitario, compara gastos y prepara un plan B. Jueves 19 de noviembre de 2026 a las 7:00 p. m. (Perú).',
+ description:'Conoce cómo organizar tu movilidad al campus, comparar gastos y preparar un plan B. Webinar UniRide: 19 de noviembre de 2026, 7:00 p. m. (hora de Lima).',
  alternates:{canonical:'/webinar'},
- openGraph:{
-  title:'Webinar gratuito de movilidad universitaria | UniRide',
-  description:'Descubre cómo llegar al campus con más calma y menos gastos. 19 de noviembre, 7:00 p. m. (hora de Lima).'
- }
+ openGraph:{title:'Webinar UniRide · Viaja al campus con más calma',description:'Aprende a planificar rutas, gastos e imprevistos con UniRide. Inscripción gratuita.'}
 };
-
-const themes=[
- {Icon:Route,title:'Organiza tu traslado',text:'Planifica la salida y confirma los acuerdos de tu viaje sin depender de mensajes dispersos.'},
- {Icon:ShieldCheck,title:'Revisa la identidad universitaria',text:'Conoce la verificación por correo institucional y las precauciones antes de compartir un viaje.'},
- {Icon:Wallet,title:'Compara tiempo y gastos',text:'Evalúa el costo total del trayecto y cómo se organiza un aporte entre pasajeros.'},
- {Icon:MapPin,title:'Elige rutas y horarios',text:'Revisa alternativas que se ajusten a tus clases y a tu campus.'},
- {Icon:BellRing,title:'Prepara un plan B',text:'Aprende a reaccionar si cancelan el viaje o cambia la hora de salida.'}
+const topics=[
+ {Icon:Route,title:'Organiza tu traslado',description:'Planifica tu salida y confirma los acuerdos sin depender de mensajes dispersos.'},
+ {Icon:ShieldCheck,title:'Verifica a tus compañeros',description:'Conoce qué revisar antes de coordinar viajes con estudiantes universitarios.'},
+ {Icon:Wallet,title:'Compara tiempo y gastos',description:'Evalúa el costo total de viajar y los aportes de cada pasajero.'},
+ {Icon:MapPin,title:'Elige rutas y horarios',description:'Revisa alternativas que se ajusten a tu campus y a tus clases.'},
+ {Icon:BellRing,title:'Prepara un plan B',description:'Descubre cómo reaccionar ante cancelaciones y cambios inesperados.'}
 ];
-const situations=[
- {emoji:'💬',title:'Coordinas viajes en grupos de WhatsApp'},
- {emoji:'❌',title:'Te cancelan a último minuto'},
- {emoji:'🚕',title:'Gastas en taxis de emergencia'},
- {emoji:'⏰',title:'Llegas tarde a clases o evaluaciones'},
- {emoji:'🚏',title:'Sientes inseguridad al esperar en paraderos'},
- {emoji:'🤝',title:'Pierdes tiempo negociando tarifas'}
+const problems=[
+ {icon:'💬',text:'Coordinas viajes en grupos de WhatsApp'},
+ {icon:'❌',text:'Te cancelan a último minuto'},
+ {icon:'🚕',text:'Gastas en taxis de emergencia'},
+ {icon:'⏰',text:'Llegas tarde a clases o evaluaciones'},
+ {icon:'🚏',text:'Sientes inseguridad en los paraderos'},
+ {icon:'🤝',text:'Pierdes tiempo acordando tarifas'}
 ];
 const results=[
- {stat:'93 %',figure:'27 de 29',description:'Mostró interés en una app de viajes compartidos entre estudiantes verificados.'},
- {stat:'93 %',figure:'27 de 29',description:'Valoró la posibilidad de contar con alternativas ante una cancelación.'},
- {stat:'76 %',figure:'22 de 29',description:'Consideró importante reservar con anticipación y conocer el precio.'}
+ {value:'93 %',count:'27 de 29',text:'Mostró interés en una aplicación de viajes compartidos entre estudiantes verificados.'},
+ {value:'93 %',count:'27 de 29',text:'Valoró disponer de alternativas cuando se cancela un viaje.'},
+ {value:'76 %',count:'22 de 29',text:'Consideró importante reservar con anticipación y conocer el precio.'}
 ];
 
 export default function WebinarPage(){
  return <main id="contenido" className={styles.page}>
-  <div className={styles.shell}>
-   <div className={styles.eventHead}>
-    <div className={styles.brandPanel}>
-     <span className={styles.brand}>Uni<span>Ride</span></span>
-     <span className={styles.eventEdition}>ENCUENTRO UNIVERSITARIO · LIMA</span>
-    </div>
-    <div className={styles.eventMeta} aria-label="Datos del evento">
-     <span><CalendarDays size={17} aria-hidden="true"/> Jueves 19 de noviembre</span>
-     <span><Clock3 size={17} aria-hidden="true"/> 7:00 p. m. · Perú</span>
-     <span><Video size={17} aria-hidden="true"/> Webinar gratuito</span>
-    </div>
-   </div>
-
-   <section className={styles.hero} aria-labelledby="webinar-title">
+  <section className={styles.hero} aria-labelledby="webinar-title">
+   <div className={styles.heroPattern} aria-hidden="true"/>
+   <div className={styles.heroContent}>
     <div className={styles.heroCopy}>
-     <div className={styles.eyebrow}><span className={styles.signal}/> WEBINAR EN VIVO · UNIRIDE</div>
-     <h1 id="webinar-title">Llega a tu universidad con <span>más calma y menos gasto.</span></h1>
-     <p className={styles.heroLead}>Aprende a comparar rutas y gastos, coordinar viajes compartidos y preparar un plan B para cuando tu traslado cambie.</p>
+     <p className={styles.eyebrow}>MOVILIDAD UNIVERSITARIA EN LIMA · WEBINAR GRATUITO</p>
+     <h1 id="webinar-title">Tu viaje al campus, <span>con más calma y menos gasto.</span></h1>
+     <p className={styles.heroDescription}>Aprende a comparar rutas y gastos, coordinar viajes con tus compañeros y preparar un plan B para llegar mejor a clases.</p>
+     <div className={styles.eventMeta}>
+      <span><CalendarDays size={17}/> Jueves 19 de noviembre de 2026</span>
+      <span><Clock3 size={17}/> 7:00 p. m. · Perú</span>
+      <span><Video size={17}/> Online · Gratis</span>
+     </div>
      <WebinarCountdown/>
-     <div className={styles.heroLinks}>
-      <a className={styles.primaryLink} href="#inscripcion">Reserva tu lugar gratis <ArrowRight size={17}/></a>
-      <a className={styles.secondaryLink} href="#temario">Ver el temario <ArrowRight size={15}/></a>
+     <div className={styles.heroActions}>
+      <a href="#inscripcion" className={styles.primaryAction}>Inscribirme gratis <ArrowRight size={18}/></a>
+      <a href="#temario" className={styles.secondaryAction}>Ver el temario <ArrowRight size={16}/></a>
      </div>
+     <figure className={styles.heroVisual}>
+      <Image src="/images/estudiante-campus.webp" alt="Estudiante universitaria usando su teléfono para organizar un recorrido hacia el campus" fill sizes="(max-width:900px) 100vw, 610px"/>
+      <figcaption><GraduationCap size={16}/> UniRide · Movilidad universitaria en Lima</figcaption>
+     </figure>
     </div>
 
-    <figure className={styles.heroPhoto}>
-     <img
-      src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1100&q=85"
-      alt="Estudiantes universitarios conversando y trabajando juntos"
-      loading="eager"
-     />
-     <figcaption><GraduationCap size={17}/> Movilidad universitaria en Lima</figcaption>
-    </figure>
-
-    <aside id="inscripcion" className={styles.signup} aria-label="Inscripción al webinar">
-     <div className={styles.signupIcon}><CalendarDays size={25}/></div>
-     <span className={styles.signupKicker}>INSCRIPCIÓN ABIERTA</span>
-     <h2>Reserva tu lugar <span>¡es gratis!</span></h2>
-     <p>Completa el formulario oficial de UniRide para solicitar tu inscripción.</p>
-     <div className={styles.formPreview} aria-label="Campos solicitados en Google Forms">
-      <div><Users size={17}/><span>Nombre completo</span></div>
-      <div><GraduationCap size={17}/><span>Correo universitario</span></div>
-      <div><CarFront size={17}/><span>Celular (opcional)</span></div>
+    <aside className={styles.signup} id="inscripcion" aria-labelledby="signup-title">
+     <div className={styles.signupTop}>
+      <span className={styles.signupIcon}><CalendarDays size={23}/></span>
+      <div><p className={styles.signupEyebrow}>CUPOS PARA EL WEBINAR</p><h2 id="signup-title">Reserva tu lugar <span>¡gratis!</span></h2></div>
      </div>
-     <a className={styles.signupButton} href={signupURL} target="_blank" rel="noopener noreferrer">
-      Quiero registrarme <ExternalLink size={17}/>
-     </a>
-     <p className={styles.dataNote}>El registro se completa en Google Forms, no en esta página. Los datos se usarán para gestionar la inscripción al webinar.</p>
-     <a className={styles.textLink} href="#temario">Conoce lo que aprenderás <ArrowRight size={14}/></a>
+     <p className={styles.signupExplanation}>Completa aquí mismo el formulario oficial de Google Forms. Tu inscripción se registra únicamente cuando lo envías y Google confirma la respuesta.</p>
+     <div className={styles.formFrame}>
+      <iframe
+       src={signupURL+'?embedded=true'}
+       title="Formulario oficial de inscripción al webinar de UniRide"
+       width="100%"
+       height="580"
+       loading="lazy"
+       referrerPolicy="strict-origin-when-cross-origin"
+      />
+     </div>
+     <p className={styles.formNote}>Si no puedes ver o enviar el formulario desde aquí, ábrelo en una pestaña nueva.</p>
+     <a className={styles.openForm} href={signupURL} target="_blank" rel="noopener noreferrer">Abrir formulario oficial <ExternalLink size={16}/></a>
+     <Link href="/privacidad" className={styles.privacyLink}>Conoce nuestro aviso de privacidad</Link>
     </aside>
-   </section>
-
-   <ul className={styles.trustStrip} aria-label="El webinar está pensado para ti">
-    <li><GraduationCap size={19}/> Para estudiantes universitarios</li>
-    <li><Timer size={19}/> Consejos aplicables a tu rutina</li>
-    <li><HeartHandshake size={19}/> Bienestar y puntualidad</li>
-   </ul>
-
-   <section className={styles.section} id="temario" aria-labelledby="temario-title">
-    <div className={styles.sectionIntro}>
-     <p className={styles.sectionEyebrow}>EL PROGRAMA</p>
-     <h2 id="temario-title">En este webinar aprenderás</h2>
-     <p>Ideas prácticas para preparar el camino a clases, revisar acuerdos y decidir mejor ante imprevistos.</p>
-    </div>
-    <div className={styles.themeGrid}>
-     {themes.map(({Icon,title,text},i)=>
-      <article className={styles.themeCard} key={title}>
-       <div className={styles.topicNumber}>0{i+1}</div>
-       <span className={styles.themeIcon}><Icon size={25}/></span>
-       <h3>{title}</h3>
-       <p>{text}</p>
-      </article>
-     )}
-    </div>
-   </section>
-
-   <section className={styles.problemSection} aria-labelledby="situaciones-title">
-    <div className={styles.sectionIntro}>
-     <p className={styles.sectionEyebrow}>PROBLEMAS COTIDIANOS</p>
-     <h2 id="situaciones-title">¿Te identificas con alguna de estas situaciones?</h2>
-     <p>El webinar parte de dificultades habituales que los universitarios pueden encontrar en su traslado.</p>
-    </div>
-    <div className={styles.situationGrid}>
-     {situations.map(({emoji,title})=><article key={title} className={styles.situationCard}><span aria-hidden="true">{emoji}</span><h3>{title}</h3></article>)}
-    </div>
-   </section>
-
-   <div className={styles.pair}>
-    <section className={styles.organizer} aria-labelledby="organiza-title">
-     <div className={styles.sectionEyebrow}>QUIÉNES SOMOS</div>
-     <h2 id="organiza-title">¿Quién organiza este webinar?</h2>
-     <div className={styles.organizerInfo}>
-      <span className={styles.organizerBrand}>Uni<span>Ride</span></span>
-      <div>
-       <h3>UniRide · Movilidad universitaria</h3>
-       <p>Somos un proyecto académico sobre movilidad colaborativa para universitarios de Lima. Nuestro prototipo propone verificación mediante correo institucional y coordinación de viajes compartidos hacia el campus.</p>
-      </div>
-     </div>
-     <div className={styles.chips}><span>Verificación universitaria</span><span>Encuesta académica</span><span>Modelo colaborativo</span></div>
-    </section>
-
-    <section className={styles.bonuses} aria-labelledby="bonos-title">
-     <div className={styles.sectionEyebrow}>RECURSOS GRATUITOS</div>
-     <h2 id="bonos-title"><Gift size={24}/> Llévate herramientas para tu ruta</h2>
-     <ul>
-      <li><Check size={18}/><span><strong><Link href="/guia">Checklist de viaje universitario <ArrowUpRight size={13}/></Link></strong><small>Organiza tu traslado paso a paso.</small></span></li>
-      <li><Check size={18}/><span><strong>Guía breve de rutas y horarios</strong><small>Ideas para planificar tu salida.</small></span></li>
-      <li><Check size={18}/><span><strong>Beneficio de bienvenida de S/ 5</strong><small>Promoción propuesta para cuando se habilite; no vigente.</small></span></li>
-     </ul>
-    </section>
    </div>
+   <svg className={styles.wave} viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 49C185 7 312 17 495 59C716 111 878 170 1098 112C1250 71 1352 25 1440 24V150H0Z" fill="#e8f3fa"/>
+    <path d="M0 70C193 10 338 37 538 85C782 150 1010 170 1191 117C1307 84 1384 58 1440 43V150H0Z" fill="#fff"/>
+   </svg>
+  </section>
 
-   <section className={styles.surveySection} aria-labelledby="encuesta-title">
-    <div className={styles.sectionIntro}>
-     <p className={styles.sectionEyebrow}>ESCUCHA A LOS ESTUDIANTES</p>
-     <h2 id="encuesta-title">Lo que nos contaron otros universitarios</h2>
-     <p>Resultados compartidos por el equipo UniRide en sus materiales académicos.</p>
-    </div>
-    <div className={styles.surveyGrid}>
-     {results.map(item=><div className={styles.surveyCard} key={item.description}>
-      <strong>{item.stat}</strong>
-      <span>{item.figure}</span>
-      <p>{item.description}</p>
-     </div>)}
-    </div>
-    <p className={styles.source}>Fuente: encuesta del equipo UniRide a 29 estudiantes. Cifras proporcionadas por el proyecto y no verificadas de forma independiente.</p>
-   </section>
+  <section className={styles.trust} aria-label="Tres motivos para participar">
+   <div className={styles.container}>
+    <div><GraduationCap size={22}/><span>Para estudiantes universitarios</span></div>
+    <div><Timer size={22}/><span>Consejos para tu día a día</span></div>
+    <div><HeartHandshake size={22}/><span>Bienestar y puntualidad</span></div>
+   </div>
+  </section>
 
-   <section className={styles.finalCta} aria-labelledby="cta-title">
+  <section className={styles.themes} id="temario" aria-labelledby="temario-title">
+   <div className={styles.container}>
+    <header className={styles.sectionHeading}>
+     <p className={styles.sectionKicker}>01 · CONTENIDO DEL WEBINAR</p>
+     <h2 id="temario-title">En este webinar aprenderás</h2>
+     <p>Cinco herramientas para organizar tu ruta con más claridad y reducir imprevistos.</p>
+    </header>
+    <div className={styles.themeGrid}>
+     {topics.map(({Icon,title,description},i)=><article className={styles.themeCard} key={title}>
+      <div className={styles.themeNumber}>0{i+1}</div>
+      <span className={styles.themeIcon}><Icon size={26}/></span>
+      <h3>{title}</h3>
+      <p>{description}</p>
+     </article>)}
+    </div>
+   </div>
+  </section>
+
+  <section className={styles.problems} aria-labelledby="situaciones-title">
+   <div className={styles.container}>
+    <header className={styles.sectionHeading}>
+     <p className={styles.sectionKicker}>02 · TU DÍA A DÍA</p>
+     <h2 id="situaciones-title">¿Alguna de estas situaciones te resulta familiar?</h2>
+     <p>Hablaremos de problemas que pueden complicar el traslado a clases.</p>
+    </header>
+    <div className={styles.problemGrid}>
+     {problems.map(item=><article key={item.text}><span aria-hidden="true">{item.icon}</span><h3>{item.text}</h3></article>)}
+    </div>
+   </div>
+  </section>
+
+  <section className={styles.organizerSection} aria-label="Organizador y recursos">
+   <div className={styles.container}>
+    <div className={styles.infoGrid}>
+     <article className={styles.infoCard}>
+      <p className={styles.sectionKicker}>03 · SOBRE EL PROYECTO</p>
+      <h2>¿Quién organiza este webinar?</h2>
+      <span className={styles.wordmark}>Uni<span>Ride</span></span>
+      <h3>UniRide · Movilidad universitaria</h3>
+      <p>Somos un proyecto académico de movilidad colaborativa para estudiantes de Lima. Nuestro prototipo plantea verificación con correo institucional y coordinación de viajes compartidos hacia el campus.</p>
+      <div className={styles.chips}><span>Verificación universitaria</span><span>Movilidad colaborativa</span><span>Proyecto UPC</span></div>
+     </article>
+     <article className={styles.resourceCard}>
+      <p className={styles.sectionKicker}>04 · MATERIAL COMPLEMENTARIO</p>
+      <h2><Gift size={25}/> Recursos para tu próximo viaje</h2>
+      <ul>
+       <li><Check size={18}/><span><strong><Link href="/guia">Checklist de viaje universitario <ArrowUpRight size={14}/></Link></strong><small>Organiza tu traslado paso a paso.</small></span></li>
+       <li><Check size={18}/><span><strong>Guía breve de rutas y horarios</strong><small>Ideas para comparar alternativas y planificar tu salida.</small></span></li>
+       <li><Check size={18}/><span><strong>Beneficio de bienvenida de S/ 5</strong><small>Propuesta para cuando se habilite la promoción; no vigente.</small></span></li>
+      </ul>
+     </article>
+    </div>
+   </div>
+  </section>
+
+  <section className={styles.results} aria-labelledby="resultados-title">
+   <div className={styles.container}>
+    <header className={styles.sectionHeading}>
+     <p className={styles.sectionKicker}>05 · INVESTIGACIÓN UNIVERSITARIA</p>
+     <h2 id="resultados-title">Lo que nos contaron otros estudiantes</h2>
+     <p>Resultados de una encuesta académica proporcionados por el equipo UniRide.</p>
+    </header>
+    <div className={styles.resultsGrid}>
+     {results.map(x=><article key={x.text}><strong>{x.value}</strong><span>{x.count}</span><p>{x.text}</p></article>)}
+    </div>
+    <p className={styles.source}>Fuente: encuesta de UniRide a 29 estudiantes. Datos aportados por el proyecto, no verificados independientemente.</p>
+   </div>
+  </section>
+
+  <section className={styles.final}>
+   <div className={styles.container}>
     <div>
-     <p className={styles.finalEyebrow}>NOS VEMOS EN EL WEBINAR</p>
-     <h2 id="cta-title">Tu camino al campus empieza antes de salir.</h2>
-     <p>Jueves 19 de noviembre · 7:00 p. m. (hora de Lima). Inscripción gratuita mediante Google Forms.</p>
+     <p className={styles.finalKicker}>WEBINAR GRATUITO · UNIRIDE</p>
+     <h2>Tu camino al campus empieza antes de salir.</h2>
+     <p>Jueves 19 de noviembre, 7:00 p. m., hora de Lima.</p>
     </div>
-    <a href={signupURL} target="_blank" rel="noopener noreferrer" className={styles.finalButton}>Inscribirme gratis <ArrowUpRight size={19}/></a>
-   </section>
-
-   <footer className={styles.webinarFooter}>
-    <span className={styles.footerBrand}>Uni<span>Ride</span></span>
-    <p>Proyecto académico UPC · Movilidad universitaria en Lima.</p>
-    <div><Link href="/">Volver a Inicio</Link><a href={blogURL} target="_blank" rel="noopener noreferrer">Blog UniRide</a><Link href="/privacidad">Privacidad</Link></div>
-   </footer>
-  </div>
+    <a href={signupURL} target="_blank" rel="noopener noreferrer" className={styles.finalButton}>Quiero participar <ArrowUpRight size={18}/></a>
+   </div>
+  </section>
  </main>;
 }
