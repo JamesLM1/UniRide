@@ -2,31 +2,28 @@
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import {useState,useEffect,useRef} from 'react';
-import {Menu,X,ArrowUpRight,Download,Moon,Sun,Monitor,Languages,ArrowRight,BookOpen,Calculator,MapPin} from 'lucide-react';
+import {Menu,X,ArrowUpRight,Download,Languages,ArrowRight,BookOpen,Calculator,MapPin} from 'lucide-react';
 const appDownloadURL = 'https://www.figma.com/design/EHMJtEVMXvPWpxgxVKUQ2Z/Untitled?node-id=0-1&t=reCxmGRqsSyahWq7-1';
 const appDownloadLabels = {es: 'Descargar la app', en: 'Download the app', pt: 'Baixar o app'} as const;
 import {Brand} from './brand';
 
 export function Navigation(){
- const pathname=usePathname();const[open,setOpen]=useState(false);const[languageOpen,setLanguageOpen]=useState(false);const[theme,setTheme]=useState('system');const[scrolled,setScrolled]=useState(false);const[progress,setProgress]=useState(0);
+ const pathname=usePathname();const[open,setOpen]=useState(false);const[languageOpen,setLanguageOpen]=useState(false);const[scrolled,setScrolled]=useState(false);const[progress,setProgress]=useState(0);
  const dialog=useRef<HTMLDialogElement>(null);const menuButton=useRef<HTMLButtonElement>(null);const language=useRef<HTMLDivElement>(null);
  const locale=pathname==='/en'?'en':pathname==='/pt'?'pt':'es';
  const text=locale==='en'?{nav:['Home','Free Test','Blog','Plans','Webinar'],close:'Close menu',menu:'Open menu'}:locale==='pt'?{nav:['Início','Teste gratuito','Blog','Planos','Webinar'],close:'Fechar menu',menu:'Abrir menu'}:{nav:['Inicio','Test gratuito','Blog','Planes','Webinar'],close:'Cerrar menú',menu:'Abrir menú'};
  const home=locale==='es'?'/':'/'+locale;
  const links=[home,'/test-movilidad','/blog','/planes','/webinar'];
  const active=(href:string)=>href==='/'||href==='/en'||href==='/pt'?pathname===href:pathname===href||pathname.startsWith(href+'/');
- useEffect(()=>{const saved=localStorage.getItem('uniride-theme')||'system';setTheme(saved);const media=matchMedia('(prefers-color-scheme: dark)');function apply(){const current=localStorage.getItem('uniride-theme')||'system';document.documentElement.dataset.theme=current==='system'?(media.matches?'dark':'light'):current;}apply();media.addEventListener('change',apply);return()=>media.removeEventListener('change',apply);},[]);
  useEffect(()=>{const update=()=>{const max=document.documentElement.scrollHeight-innerHeight;setScrolled(scrollY>24);setProgress(max>0?scrollY/max:0);};window.addEventListener('scroll',update,{passive:true});update();return()=>window.removeEventListener('scroll',update);},[pathname]);
  useEffect(()=>{setOpen(false);setLanguageOpen(false);},[pathname]);
  useEffect(()=>{const close=(e:PointerEvent)=>{if(language.current&&!language.current.contains(e.target as Node))setLanguageOpen(false);};const key=(e:KeyboardEvent)=>{if(e.key==='Escape')setLanguageOpen(false);};document.addEventListener('pointerdown',close);document.addEventListener('keydown',key);return()=>{document.removeEventListener('pointerdown',close);document.removeEventListener('keydown',key);};},[]);
  useEffect(()=>{const el=dialog.current;if(!el)return;if(open&&!el.open){el.showModal();const before=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{document.body.style.overflow=before;if(el.open)el.close();menuButton.current?.focus();};}if(!open&&el.open)el.close();},[open]);
- function cycleTheme(){const next=theme==='system'?'light':theme==='light'?'dark':'system';setTheme(next);localStorage.setItem('uniride-theme',next);document.documentElement.dataset.theme=next==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):next;}
  if(pathname.startsWith('/app')||pathname==='/demo')return null;
  return <>
   <header className={'hybrid-header '+(scrolled?'is-scrolled':'')}><div className="hybrid-shell"><Brand mark={false}/>
    <nav className="hybrid-nav" aria-label="Navegación principal">{links.map((href,i)=><Link key={href} href={href} aria-current={active(href)?'page':undefined}>{text.nav[i]}</Link>)}</nav>
    <div className="hybrid-actions"><div className="hybrid-language" ref={language}><button className="hybrid-icon" aria-label="Elegir idioma" aria-expanded={languageOpen} aria-controls="idiomas-uniride" onClick={()=>setLanguageOpen(!languageOpen)}><Languages size={17}/><small>{locale.toUpperCase()}</small></button>{languageOpen&&<nav id="idiomas-uniride" className="hybrid-language-panel" aria-label="Idiomas"><Link href="/" hrefLang="es" onClick={()=>setLanguageOpen(false)} aria-current={locale==='es'?'page':undefined}>Español <span>ES</span></Link><Link href="/pt" hrefLang="pt" onClick={()=>setLanguageOpen(false)} aria-current={locale==='pt'?'page':undefined}>Português <span>PT</span></Link><Link href="/en" hrefLang="en" onClick={()=>setLanguageOpen(false)} aria-current={locale==='en'?'page':undefined}>English <span>EN</span></Link></nav>}</div>
-    <button className="hybrid-icon hybrid-theme" aria-label={'Cambiar tema. Actual: '+(theme==='system'?'sistema':theme==='dark'?'oscuro':'claro')} onClick={cycleTheme} title="Cambiar tema">{theme==='system'?<Monitor size={17}/>:theme==='dark'?<Moon size={17}/>:<Sun size={17}/>}</button>
     <a href={appDownloadURL} target="_blank" rel="noopener noreferrer" className="hybrid-test" onClick={()=>setLanguageOpen(false)}>{appDownloadLabels[locale]}<Download size={15} aria-hidden="true"/></a>
     <button ref={menuButton} className={'hybrid-menu-toggle '+(open?'is-open':'')} aria-label={open?text.close:text.menu} aria-expanded={open} aria-controls="mobile-menu-uniride" onClick={()=>setOpen(!open)}><span/><span/></button>
    </div><div className="hybrid-progress" style={{transform:'scaleX('+progress+')'}}/>
