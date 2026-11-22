@@ -11,9 +11,9 @@ export function Navigation(){
  const pathname=usePathname();const[open,setOpen]=useState(false);const[languageOpen,setLanguageOpen]=useState(false);const[theme,setTheme]=useState('system');const[scrolled,setScrolled]=useState(false);const[progress,setProgress]=useState(0);
  const dialog=useRef<HTMLDialogElement>(null);const menuButton=useRef<HTMLButtonElement>(null);const language=useRef<HTMLDivElement>(null);
  const locale=pathname==='/en'?'en':pathname==='/pt'?'pt':'es';
- const text=locale==='en'?{nav:['Home','Lead Magnet','Blog','Testimonials','Plans','Webinar'],close:'Close menu',menu:'Open menu'}:locale==='pt'?{nav:['Início','Lead Magnet','Blog','Depoimentos','Planos','Webinar'],close:'Fechar menu',menu:'Abrir menu'}:{nav:['Inicio','Lead Magnet','Blog','Testimonios','Planes','Webinar'],close:'Cerrar menú',menu:'Abrir menú'};
+ const text=locale==='en'?{nav:['Home','Free Test','Blog','Plans','Webinar'],close:'Close menu',menu:'Open menu'}:locale==='pt'?{nav:['Início','Teste gratuito','Blog','Planos','Webinar'],close:'Fechar menu',menu:'Abrir menu'}:{nav:['Inicio','Test gratuito','Blog','Planes','Webinar'],close:'Cerrar menú',menu:'Abrir menú'};
  const home=locale==='es'?'/':'/'+locale;
- const links=[home,'/test-movilidad','/blog',home+'#testimonios','/planes','/webinar'];
+ const links=[home,'/test-movilidad','/blog','/planes','/webinar'];
  const active=(href:string)=>href==='/'||href==='/en'||href==='/pt'?pathname===href:pathname===href||pathname.startsWith(href+'/');
  useEffect(()=>{const saved=localStorage.getItem('uniride-theme')||'system';setTheme(saved);const media=matchMedia('(prefers-color-scheme: dark)');function apply(){const current=localStorage.getItem('uniride-theme')||'system';document.documentElement.dataset.theme=current==='system'?(media.matches?'dark':'light'):current;}apply();media.addEventListener('change',apply);return()=>media.removeEventListener('change',apply);},[]);
  useEffect(()=>{const update=()=>{const max=document.documentElement.scrollHeight-innerHeight;setScrolled(scrollY>24);setProgress(max>0?scrollY/max:0);};window.addEventListener('scroll',update,{passive:true});update();return()=>window.removeEventListener('scroll',update);},[pathname]);
