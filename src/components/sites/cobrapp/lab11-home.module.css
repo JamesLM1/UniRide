@@ -137,3 +137,7 @@
 .storeGlyphs img{display:inline-block;width:28px;height:32px;object-fit:contain}
 .storeGlyphs .stepAppleIcon{background:#118acb;border-radius:7px;padding:5px}
 @media(max-width:760px){.downloadStudentPhoto{inset:0 9% 0 -3%;background-position:48% center}}
+
+/* Recorte centrado en la estudiante, sin texto heredado de la referencia */
+.downloadStudentPhoto{background-size:auto 130%;background-position:right center}
+@media(max-width:760px){.downloadStudentPhoto{background-size:auto 128%;background-position:right center}}
