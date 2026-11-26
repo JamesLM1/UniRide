@@ -2,11 +2,12 @@
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import {useState,useEffect,useRef} from 'react';
-import {Menu,X,ArrowUpRight,Download,Languages,ArrowRight,BookOpen,Calculator,MapPin,Camera,Video,Users,BriefcaseBusiness,Music2} from 'lucide-react';
+import {Menu,X,ArrowUpRight,Download,Languages,ArrowRight,BookOpen,Calculator,MapPin} from 'lucide-react';
+import {TikTokIcon,InstagramIcon,FacebookIcon,YouTubeIcon} from './social-icons';
 const appDownloadURL = 'https://www.figma.com/design/EHMJtEVMXvPWpxgxVKUQ2Z/Untitled?node-id=0-1&t=reCxmGRqsSyahWq7-1';
-const appDownloadLabels = {es: 'Descargar la app', en: 'Download the app', pt: 'Baixar o app'} as const;
+const appDownloadLabels = {es: 'Explorar prototipo', en: 'Explore prototype', pt: 'Explorar protótipo'} as const;
 // Rellenar href al recibir las cuentas oficiales. Hasta entonces no mostrar enlaces que no existen.
-const socialPlatforms=[{name:'Instagram',Icon:Camera,href:null},{name:'TikTok',Icon:Music2,href:null},{name:'YouTube',Icon:Video,href:null},{name:'Facebook',Icon:Users,href:null},{name:'LinkedIn',Icon:BriefcaseBusiness,href:null}] as const;
+const socialPlatforms=[{name:'TikTok',Icon:TikTokIcon,href:null},{name:'Instagram',Icon:InstagramIcon,href:null},{name:'Facebook',Icon:FacebookIcon,href:null},{name:'YouTube',Icon:YouTubeIcon,href:null}] as const;
 import {Brand} from './brand';
 
 export function Navigation(){
