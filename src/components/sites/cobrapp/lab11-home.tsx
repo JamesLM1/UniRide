@@ -168,9 +168,10 @@ export function Lab11Home(){
             </ul>
           </div>
           <div className={styles.downloadArtwork}>
-            <div className={styles.downloadStudentPhoto}>
-              <Image src="/images/estudiante-campus.webp" fill alt="Estudiante universitaria usando su celular junto al campus" sizes="(max-width: 760px) 85vw, 480px"/>
-            </div>
+            <div className={styles.downloadStudentPhoto}
+              style={{backgroundImage:'url("https://d2ol7oe51mr4n9.cloudfront.net/user_3KTXZdJcRrqse3IVYdtEqdvXjIS/959c127b-985c-45af-85d5-f364dedf959c.png")'}}
+              role="img" aria-label="Estudiante universitaria sonriente con mochila y audífonos usando su celular junto al campus"
+            />
             <div className={styles.downloadPhoneFrame}>
               <div className={styles.downloadPhoneNotch} aria-hidden="true"/>
               <div className={styles.downloadPhoneScreen}>
@@ -181,8 +182,8 @@ export function Lab11Home(){
           <aside className={styles.downloadStores} aria-label="Opciones para conocer UniRide">
             <h3>¡Descárgala <span>ahora!</span></h3>
             <p>Disponible en:</p>
-            <div className={styles.storeBadge} aria-label="Google Play, lanzamiento próximamente"><span className={styles.playMark} aria-hidden="true">▶</span><span><small>Próximamente en</small><strong>Google Play</strong></span></div>
-            <div className={styles.storeBadge} aria-label="App Store, lanzamiento próximamente"><span className={styles.appleMark} aria-hidden="true">●</span><span><small>Próximamente en</small><strong>App Store</strong></span></div>
+            <div className={styles.storeBadge} aria-label="Google Play, lanzamiento próximamente"><img className={styles.brandStoreIcon} src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_Play_2022_icon.svg" alt="" width="42" height="46"/><span><small>Próximamente en</small><strong>Google Play</strong></span></div>
+            <div className={styles.storeBadge} aria-label="App Store, lanzamiento próximamente"><img className={styles.brandStoreIcon} src="https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg" alt="" width="41" height="46"/><span><small>Próximamente en</small><strong>App Store</strong></span></div>
             <a href="https://uniride-movilidad.vercel.app/descargas" className={styles.qrCard}>
               <QRCodeSVG value="https://uniride-movilidad.vercel.app/descargas" size={108} level="M" bgColor="#ffffff" fgColor="#051b3f" marginSize={2}/>
               <span><strong>Escanea el QR</strong><small>y conoce nuestra demo desde tu celular</small></span>
@@ -200,7 +201,7 @@ export function Lab11Home(){
         </div>
         <div className={styles.downloadHow}>
           <div className={styles.downloadHowTitle}><h3>Descargar la app <span>es muy fácil</span></h3><ArrowRight size={34}/></div>
-          <div className={styles.downloadHowStep}><b>1</b><div><strong>Elige tu tienda</strong><span className={styles.storeGlyphs} aria-hidden="true"><span className={styles.playMark}>▶</span><span className={styles.appleMark}>●</span></span></div></div>
+          <div className={styles.downloadHowStep}><b>1</b><div><strong>Elige tu tienda</strong><span className={styles.storeGlyphs} aria-hidden="true"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_Play_2022_icon.svg" alt="" width="29" height="31"/><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg" alt="" width="29" height="31" className={styles.stepAppleIcon}/></span></div></div>
           <div className={styles.downloadHowStep}><b>2</b><Download size={37}/><strong>Descarga UniRide</strong></div>
           <div className={styles.downloadHowStep}><b>3</b><CheckCircle2 size={39}/><strong>Regístrate y empieza hoy</strong></div>
         </div>
