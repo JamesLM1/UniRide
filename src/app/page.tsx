@@ -1,2 +1,5 @@
-import {LandingExperience} from '@/components/sites/cobrapp/landing-experience';
-export default function Home(){return <LandingExperience/>;}
+import {Lab11Home} from '@/components/sites/cobrapp/lab11-home';
+
+export default function Home(){
+  return <Lab11Home/>;
+}
