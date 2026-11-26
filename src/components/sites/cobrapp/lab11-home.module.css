@@ -131,13 +131,31 @@
 @media(max-width:760px){.downloadLanding{grid-template-columns:1fr}.downloadIntro h2{max-width:100%;font-size:clamp(38px,10vw,65px)}.downloadArtwork{max-width:560px;width:100%;height:450px;margin:12px auto}.downloadStores{grid-column:1;max-width:560px}.downloadFeatureRail{grid-template-columns:repeat(2,1fr)}.downloadFeatureRail span{border-right:0;border-bottom:1px solid #d4e7f438;justify-content:flex-start}.downloadFeatureRail span:last-child{grid-column:1/-1}.downloadHow{grid-template-columns:1fr}.downloadHowTitle{padding:5px 2px 16px;justify-content:space-between}.downloadHowStep{border-left:0;border-top:1px solid #62bdda;padding:13px 7px;justify-content:flex-start}}
 @media(max-width:460px){.downloadArtwork{height:355px}.downloadPhoneFrame{border-radius:25px;padding:6px}.downloadPhoneScreen{border-radius:19px}.downloadStudentPhoto{border-radius:24% 10% 10% 8%}.downloadStores{grid-template-columns:1fr}.downloadStores h3,.downloadStores>p:first-of-type,.qrCard,.downloadDisclosure,.downloadDemoLink{grid-column:1}.downloadFeatureRail{grid-template-columns:1fr 1fr}.downloadFeatureRail span{font-size:12px}.downloadHow{padding:15px 17px}}
 
-/* Fotografía de la estudiante y símbolos de tiendas contrastados */
-.downloadStudentPhoto{background-size:cover;background-position:50% 48%;background-repeat:no-repeat;border-radius:0;box-shadow:none;inset:0 8% 0 -9%;overflow:visible}
+/* Foto de descarga: disolver los bordes y ocultar el texto que venía dentro de la referencia original.
+   Los bordes en alfa dejan ver el azul de la landing, sin rectángulos ni letras sobrepuestas. */ 
+.downloadStudentPhoto{
+  inset:-3% 7% 0 -6%;
+  border-radius:0;
+  box-shadow:none;
+  overflow:visible;
+  background-repeat:no-repeat;
+  background-position:right center;
+  background-size:auto 130%;
+  -webkit-mask-image:
+    linear-gradient(90deg,transparent 0%,transparent 29%,#000 47%,#000 87%,transparent 100%),
+    linear-gradient(180deg,transparent 0%,#000 12%,#000 84%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(90deg,transparent 0%,transparent 29%,#000 47%,#000 87%,transparent 100%),
+    linear-gradient(180deg,transparent 0%,#000 12%,#000 84%,transparent 100%);
+  mask-composite:intersect;
+}
 .brandStoreIcon{display:block;flex:none;object-fit:contain;width:43px;height:48px}
 .storeGlyphs img{display:inline-block;width:28px;height:32px;object-fit:contain}
 .storeGlyphs .stepAppleIcon{background:#118acb;border-radius:7px;padding:5px}
-@media(max-width:760px){.downloadStudentPhoto{inset:0 9% 0 -3%;background-position:48% center}}
-
-/* Recorte centrado en la estudiante, sin texto heredado de la referencia */
-.downloadStudentPhoto{background-size:auto 130%;background-position:right center}
-@media(max-width:760px){.downloadStudentPhoto{background-size:auto 128%;background-position:right center}}
+@media(max-width:760px){
+  .downloadStudentPhoto{inset:-2% 7% 0 -3%;background-size:auto 127%;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 25%,#000 45%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 11%,#000 85%,transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0%,transparent 25%,#000 45%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 11%,#000 85%,transparent 100%);
+  }
+}
