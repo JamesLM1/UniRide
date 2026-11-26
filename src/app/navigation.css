@@ -71,3 +71,10 @@
 @media(max-width:1000px){.hybrid-socials{display:none}}
 @media(max-width:900px){.hybrid-socials{display:none}.hybrid-mobile-socials{display:block}}
 @media(prefers-reduced-motion:reduce){.hybrid-socials a,.hybrid-test{transition:none}.hybrid-socials a:hover,.hybrid-test:hover{transform:none}}
+
+/* Redes de marca reales (react-icons) */
+.hybrid-socials{gap:4px;border-left:1px solid #66cdef4a;border-right:1px solid #66cdef4a}
+.hybrid-socials a{color:#72e8fc;opacity:.88;cursor:pointer}
+.hybrid-socials a:hover{color:#fff;background:#31c9e536;transform:translateY(-3px) scale(1.06)}
+.hybrid-mobile-socials>div>a{color:#53d8f4}
+@media(max-width:1180px){.hybrid-socials{gap:1px}}

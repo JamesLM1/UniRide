@@ -196,3 +196,45 @@
 }
 @media(max-width:760px){.home section[id]{scroll-margin-top:80px}.backToTop{margin-left:0}.home :is(.proposalMain,.proposalSide article,.missionCard,.valueCard,.step,.functionCard,.cases article):hover{transform:none}}
 @media(prefers-reduced-motion:reduce){.home :is(.proposalMain,.proposalSide article,.missionCard,.valueCard,.step,.functionCard,.cases article,.stepAction,.qrCard,.phoneShot img){transition:none!important;animation:none!important;transform:none!important}}
+
+/* Agency visual contrasts */
+.home{--agency-ink:#082644;--agency-cyan:#46d8f7;background:#06182e;color:#fff}
+.hero{isolation:isolate;overflow:hidden;background:linear-gradient(125deg,#06172f 5%,#093d69 75%,#064868);padding-top:clamp(80px,9vw,137px)}
+.heroGlow{opacity:.3}
+.heroMedia{max-width:640px}
+.heroGrid{grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:clamp(24px,4vw,55px)}
+.heroCopy{position:relative;z-index:2}
+.heroCopy h1{font-family:var(--font-display);font-size:clamp(43px,5.2vw,77px);line-height:1.055}
+.section{background:linear-gradient(145deg,#f7fbfc,#e5f5fa);color:#082644}
+.sectionAlt{background:linear-gradient(140deg,#081f3c,#0e4466);color:#fff}
+.section .sectionHead h2,.section .sectionHead h2 span{color:#073052}
+.section .sectionHead h2 span{color:#008bb8}
+.section .sectionHead>p:last-child{color:#496783}
+.section .eyebrow{color:#087ba3}
+.section .proposalMain{background:linear-gradient(135deg,#fff,#dcf4fc);border:1px solid #9bd7e4;color:#082644;box-shadow:0 20px 45px #073c5818}
+.section .proposalMain h3,.section .proposalMain p{color:#153958}
+.section .proposalSide article{background:#fff;color:#123657;border-color:#a7dbe7;box-shadow:0 8px 24px #052f4510}
+.section .proposalSide h3,.section .proposalSide p{color:#234962}
+.section .proposalIcon{background:#d5f2fc;color:#087b9e}
+.section .pillRow span{background:#ddf5fa;border-color:#a4deef;color:#1b5571}
+.section .cases article{background:#fff;border-color:#b8dfe9;box-shadow:0 14px 25px #082b3c12}
+.section .cases article h3{color:#0a3156}
+.section .cases article p{color:#42627d}
+.section .step{background:#fff;border-color:#aed2ea}
+.sectionAlt .functionCard,.sectionAlt .missionCard,.sectionAlt .valueCard{background:#ffffff11;border-color:#a9dded44;backdrop-filter:blur(8px);border-radius:22px}
+.sectionAlt .functionCard:hover,.sectionAlt .missionCard:hover,.sectionAlt .valueCard:hover{border-color:#46d8f7b0;background:#ffffff19}
+.sectionAlt .sectionHead h2,.sectionAlt .sectionHead p{color:#f0fcff}
+.videoSection{background:linear-gradient(135deg,#b8f0fb,#d9f9f0);color:#062847}
+.videoSection .videoCopy h2,.videoSection .videoCopy h2 span{color:#073459}
+.videoSection .videoCopy>p:not(.eyebrow){color:#315b70}
+.videoSection .videoCopy .eyebrow{color:#076b98}
+.videoSection .roundIcon{background:#e6fcff}
+.downloadSection{background:radial-gradient(ellipse at 55% 18%,#1778b269,transparent 50%),linear-gradient(120deg,#06182f,#0a3159 57%,#063853)!important}
+.faqSection{background:#f7fbfc;color:#093258}
+.faqSection .sectionHead h2{color:#092f54}
+.faqSection .sectionHead .eyebrow{color:#0089b9}
+.faqSection .faqExtra,.faqSection .faqExtra a{color:#087b9c}
+.agency-story{margin-block:3rem}
+.sectionHead h2{font-family:var(--font-display)!important;font-weight:800;letter-spacing:-.058em}
+@media(max-width:800px){.heroGrid{grid-template-columns:1fr}.heroMedia{max-width:600px}}
+@media(prefers-reduced-motion:reduce){.section .proposalSide article,.sectionAlt .functionCard{transition:none}}

@@ -7,6 +7,8 @@ import {
   Play, Route, ShieldCheck, Sparkles, Target, Users, Wallet
 } from 'lucide-react';
 import {TeamSection} from './team-section';
+import {Reveal,WordReveal,AuroraBackground,FloatingHeroArt,ScrollStory,SmoothScroll,SpotlightCard} from './agency-motion';
+import {AgencyFAQ} from './agency-faq';
 import styles from './lab11-home.module.css';
 
 const figmaURL = 'https://www.figma.com/design/EHMJtEVMXvPWpxgxVKUQ2Z/Untitled?node-id=0-1&t=reCxmGRqsSyahWq7-1';
@@ -35,13 +37,13 @@ const functions = [
 ];
 
 export function Lab11Home(){
-  return <main id="contenido" className={styles.home}>
+  return <main id="contenido" className={styles.home}><SmoothScroll/>
     <section className={styles.hero} aria-labelledby="inicio-titulo">
-      <div className={styles.heroGlow} aria-hidden="true"/>
+      <div className={styles.heroGlow} aria-hidden="true"/><AuroraBackground/>
       <div className={'container '+styles.heroGrid}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>PROYECTO ACADÉMICO UPC · MOVILIDAD UNIVERSITARIA EN LIMA</p>
-          <h1 id="inicio-titulo">UniRide, tu viaje <span>compartido al campus.</span></h1>
+          <WordReveal prefix="UniRide, tu viaje" accent="compartido al campus."/>
           <p className={styles.heroLead}>Conectamos estudiantes que recorren caminos similares para organizar viajes al campus, coordinar reservas y compartir los acuerdos de cada recorrido.</p>
           <div className={styles.heroActions}>
             <Link href="#proyecto" className={styles.primary}>Conoce UniRide <ArrowRight size={18}/></Link>
@@ -49,13 +51,11 @@ export function Lab11Home(){
           </div>
           <p className={styles.disclaimer}>UniRide es un prototipo académico. No opera viajes ni garantiza disponibilidad, seguridad o puntualidad.</p>
         </div>
-        <div className={styles.heroMedia}>
-          <Image src="/images/estudiante-campus.webp" width={1120} height={630} alt="Ilustración de una estudiante utilizando su teléfono en el campus universitario" priority sizes="(max-width: 780px) 92vw, 48vw"/>
-          <span className={styles.heroTag}><CarFront size={17}/> Tu campus, tu comunidad</span>
-        </div>
+        <div className={styles.heroMedia}><FloatingHeroArt/></div>
       </div>
     </section>
 
+    <div className="agency-marquee" aria-label="Beneficios de UniRide"><div className="agency-marquee-track">{[0,1].map(i=><div key={i} style={{display:"flex",gap:58}}>{["RUTAS COMPATIBLES","COMUNIDAD UNIVERSITARIA","RESERVAS ORGANIZADAS","GASTOS COMPARTIDOS","PLAN B PARA IMPREVISTOS"].map(t=><span key={t}>{t}</span>)}</div>)}</div></div>
     <section id="proyecto" className={styles.section} aria-labelledby="proyecto-titulo">
       <div className="container">
         <div className={styles.sectionHead}>
@@ -63,7 +63,7 @@ export function Lab11Home(){
           <h2 id="proyecto-titulo">Una mejor forma de <span>organizar el camino.</span></h2>
           <p>UniRide es una propuesta universitaria de movilidad compartida en Lima. Reúne rutas, horarios, puntos de encuentro y solicitudes en un mismo lugar para que la coordinación sea más sencilla.</p>
         </div>
-        <div className={styles.proposalGrid}>
+        <Reveal><div className={styles.proposalGrid}>
           <article className={styles.proposalMain}>
             <div className={styles.proposalIcon}><Target size={29}/></div>
             <h3>Nuestra propuesta de valor</h3>
@@ -75,7 +75,7 @@ export function Lab11Home(){
             <article><CarFront size={23}/><div><h3>Durante el viaje</h3><p>Revisa el punto de encuentro y el estado del recorrido.</p></div></article>
             <article><HeartHandshake size={23}/><div><h3>Después de llegar</h3><p>Califica tu experiencia y sigue conectado a la comunidad.</p></div></article>
           </div>
-        </div>
+        </div></Reveal>
       </div>
     </section>
 
@@ -86,11 +86,11 @@ export function Lab11Home(){
           <h2 id="identidad-titulo">Nuestra <span>misión, visión y valores.</span></h2>
           <p>Estos principios orientan el diseño de UniRide y las decisiones que buscamos validar con estudiantes.</p>
         </div>
-        <div className={styles.missionGrid}>
+        <Reveal><div className={styles.missionGrid}>
           <article className={styles.missionCard}><div className={styles.roundIcon}><Target size={25}/></div><h3>Misión</h3><p>Facilitar la organización de viajes compartidos entre universitarios mediante una experiencia digital colaborativa, con información clara y acuerdos responsables.</p></article>
           <article className={styles.missionCard}><div className={styles.roundIcon}><GraduationCap size={25}/></div><h3>Visión</h3><p>Contribuir a una comunidad universitaria más conectada, donde compartir una ruta sea una alternativa accesible, bien organizada y cada vez más confiable.</p></article>
-        </div>
-        <div className={styles.valuesGrid}>{values.map(({title,description,icon:Icon})=><article key={title} className={styles.valueCard}><Icon size={24}/><h3>{title}</h3><p>{description}</p></article>)}</div>
+        </div></Reveal>
+        <Reveal delay={0.12}><div className={styles.valuesGrid}>{values.map(({title,description,icon:Icon})=><SpotlightCard key={title} className={styles.valueCard}><Icon size={24}/><h3>{title}</h3><p>{description}</p></SpotlightCard>)}</div></Reveal>
       </div>
     </section>
 
@@ -101,12 +101,7 @@ export function Lab11Home(){
           <h2 id="funciona-titulo">De buscar un viaje a <span>llegar al campus.</span></h2>
           <p>Estas son pantallas ilustrativas del prototipo desarrollado para los laboratorios de UniRide. Explora las etapas para conocer el recorrido planteado.</p>
         </div>
-        <div className={styles.steps}>{steps.map(step=><article className={styles.step} key={step.number}>
-          <div className={styles.stepTop}><span>{step.number}</span><h3>{step.title}</h3></div>
-          <div className={styles.phoneShot}><Image src={step.image} width={402} height={874} alt={step.alt} sizes="(max-width: 650px) 65vw, 250px"/></div>
-          <p>{step.description}</p>
-          <Link href="/demo" className={styles.stepAction} aria-label={`Explorar en la demostración: ${step.title}`}>Explorar esta etapa <ArrowRight size={17}/></Link>
-        </article>)}</div>
+        <ScrollStory steps={steps}/>
       </div>
     </section>
 
@@ -134,28 +129,28 @@ export function Lab11Home(){
           <h2 id="funciones-titulo">Más herramientas para <span>tu vida universitaria.</span></h2>
           <p>Las funciones y planes que plantea nuestro prototipo conectan movilidad, comunicación y comunidad.</p>
         </div>
-        <div className={styles.functionsGrid}>{functions.map(({title,text,icon:Icon,href,label})=><article key={title} className={styles.functionCard}>
+        <Reveal><div className={styles.functionsGrid+" agency-bento"}>{functions.map(({title,text,icon:Icon,href,label})=><article key={title} className={styles.functionCard}>
           <span className={styles.functionIcon}><Icon size={24}/></span><h3>{title}</h3><p>{text}</p>
           <Link href={href}>{label}<ArrowRight size={16}/></Link>
-        </article>)}</div>
+        </article>)}</div></Reveal>
       </div>
     </section>
 
     <section id="casos-de-uso" className={styles.section} aria-labelledby="casos-titulo">
       <div className="container">
         <div className={styles.sectionHead}><p className={styles.eyebrow}>PARA QUIÉN ES UNIRIDE</p><h2 id="casos-titulo">Pensado para estudiantes <span>con rutas en común.</span></h2></div>
-        <div className={styles.cases}>
+        <Reveal><div className={styles.cases}>
           <article><GraduationCap size={26}/><h3>Estudias y vas al campus</h3><p>Revisa opciones compatibles con tu horario de clases y tu sede universitaria.</p></article>
           <article><Users size={26}/><h3>Compartes tu recorrido</h3><p>Organiza un trayecto que ya realizas, indicando horario, plazas y aporte.</p></article>
           <article><BookOpen size={26}/><h3>Tu ruta cambió</h3><p>Consulta recomendaciones y prepara un plan B cuando surge un imprevisto.</p></article>
-        </div>
+        </div></Reveal>
       </div>
     </section>
 
 
     <section id="descargar-app" className={styles.downloadSection} aria-labelledby="descarga-titulo">
       <div className={'container '+styles.downloadContainer}>
-        <div className={styles.downloadLanding}>
+        <Reveal><div className={styles.downloadLanding}>
           <div className={styles.downloadIntro}>
             <p className={styles.downloadKicker}>APP UNIRIDE</p>
             <h2 id="descarga-titulo">Descarga la app <span>gratis</span></h2>
@@ -193,7 +188,7 @@ export function Lab11Home(){
             <a href={figmaURL} target="_blank" rel="noopener noreferrer" className={styles.downloadDemoLink}>Explorar el prototipo <ArrowRight size={15}/></a>
           </aside>
         </div>
-        <div className={styles.downloadFeatureRail} aria-label="Beneficios de UniRide">
+        </Reveal><div className={styles.downloadFeatureRail} aria-label="Beneficios de UniRide">
           <span><MapPin size={30}/> Planificación<br/>de rutas</span>
           <span><Users size={30}/> Comunidad<br/>verificada</span>
           <span><Wallet size={30}/> Ahorro<br/>compartido</span>
@@ -213,12 +208,7 @@ export function Lab11Home(){
     <section id="preguntas-frecuentes" className={styles.faqSection}>
       <div className="container">
         <div className={styles.sectionHead}><p className={styles.eyebrow}>RESOLVEMOS TUS DUDAS</p><h2>Preguntas frecuentes</h2></div>
-        <div className={styles.faqs}>
-          <details><summary>¿UniRide ya ofrece viajes reales?</summary><p>No. Es un proyecto académico y sus pantallas muestran escenarios de prueba.</p></details>
-          <details><summary>¿Cómo se confirma una reserva?</summary><p>En el flujo propuesto, primero envías la solicitud y la reserva queda confirmada cuando el conductor la acepta.</p></details>
-          <details><summary>¿Qué hace Ruti?</summary><p>Ruti orienta al usuario sobre el prototipo, preguntas frecuentes y alternativas de traslado. No sustituye la verificación de información ni un servicio de emergencia.</p></details>
-          <details><summary>¿Puedo descargar la app?</summary><p>Por ahora puedes abrir el prototipo de Figma y la demostración web. No hay una aplicación publicada en tiendas.</p></details>
-        </div>
+        <AgencyFAQ/>
         <p className={styles.faqExtra}>¿Tienes otra consulta? <Link href="/contacto">Contáctanos <ArrowRight size={15}/></Link><Link href="#contenido" className={styles.backToTop}>Volver al inicio ↑</Link></p>
       </div>
     </section>
