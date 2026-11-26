@@ -54,16 +54,18 @@
 @media(max-width:600px) { .replica-footer .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* Lab 11: navegación más limpia, redes preparadas y controles con respuesta visual. */
-.hybrid-socials{display:flex;align-items:center;gap:2px;padding-inline:7px;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.hybrid-socials{display:flex;align-items:center;gap:5px;padding-inline:9px;border-left:1px solid var(--line);border-right:1px solid var(--line)}
 .hybrid-socials a,.hybrid-socials span{display:inline-flex;align-items:center;justify-content:center;width:30px;height:34px;border-radius:8px;color:var(--mint,#37cdf4)}
-.hybrid-socials a{transition:background .2s ease,color .2s ease,transform .2s ease}
-.hybrid-socials a:hover{transform:translateY(-2px);background:color-mix(in srgb,var(--mint) 16%,transparent)}
+.hybrid-socials a{width:34px;height:36px;color:#f4faff;border:1px solid #315874;background:#143451;transition:background .2s ease,color .2s ease,transform .2s ease}
+.hybrid-socials a:hover{transform:translateY(-2px);color:#fff;background:#205879;border-color:#62d7f7}
 .hybrid-socials span{opacity:.45;cursor:default}
 .hybrid-mobile-socials{padding:12px 2px 20px;border-bottom:1px solid var(--line)}
 .hybrid-mobile-socials>span{font-weight:750;font-size:13px;display:block}
 .hybrid-mobile-socials>div{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 7px}
 .hybrid-mobile-socials>div>*{width:39px;height:39px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px}
 .hybrid-mobile-socials>div>span{opacity:.48}
+.hybrid-mobile-socials>div>a{color:#f4faff;background:#143451;border-color:#315874;width:44px;height:44px}
+.hybrid-mobile-socials>div>a:hover{background:#205879;border-color:#62d7f7}
 .hybrid-mobile-socials small{font-size:11px;color:var(--muted)}
 .hybrid-test{background:#087f28;color:#fff;transition:transform .18s,background .18s,box-shadow .18s}
 .hybrid-test:hover{background:#0b9830;color:#fff;transform:translateY(-2px);box-shadow:0 7px 20px #07872844}

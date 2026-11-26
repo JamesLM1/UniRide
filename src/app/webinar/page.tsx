@@ -8,11 +8,12 @@ import {
 } from 'lucide-react';
 import {WebinarCountdown} from './countdown';
 import {WebinarRegistrationForm} from './registration-form';
+import {webinarEvent} from '@/lib/webinar-event.mjs';
 import styles from './page.module.css';
 
 export const metadata:Metadata={
  title:'Webinar gratuito · UniRide',
- description:'Conoce cómo organizar tu movilidad al campus, comparar gastos y preparar un plan B. Webinar UniRide: 19 de noviembre de 2026, 7:00 p. m. (hora de Lima).',
+ description:'Conoce cómo organizar tu movilidad al campus, comparar gastos y preparar un plan B. Fecha de demostración: 10 de diciembre de 2026, 7:00 p. m. (hora de Lima). Convocatoria real por confirmar.',
  alternates:{canonical:'/webinar'},
  openGraph:{title:'Webinar UniRide · Viaja al campus con más calma',description:'Aprende a planificar rutas, gastos e imprevistos con UniRide. Inscripción gratuita.'}
 };
@@ -47,8 +48,8 @@ export default function WebinarPage(){
      <h1 id="webinar-title">Tu viaje al campus, <span>con más calma y menos gasto.</span></h1>
      <p className={styles.heroDescription}>Aprende a comparar rutas y gastos, coordinar viajes con tus compañeros y preparar un plan B para llegar mejor a clases.</p>
      <div className={styles.eventMeta}>
-      <span><CalendarDays size={17}/> Jueves 19 de noviembre de 2026</span>
-      <span><Clock3 size={17}/> 7:00 p. m. · Perú</span>
+      <span><CalendarDays size={17}/> {webinarEvent.dateLabel}</span>
+      <span><Clock3 size={17}/> {webinarEvent.timeLabel}</span>
       <span><Video size={17}/> Online · Gratis</span>
      </div>
      <WebinarCountdown/>
@@ -159,7 +160,7 @@ export default function WebinarPage(){
     <div>
      <p className={styles.finalKicker}>WEBINAR GRATUITO · UNIRIDE</p>
      <h2>Tu camino al campus empieza antes de salir.</h2>
-     <p>Jueves 19 de noviembre, 7:00 p. m., hora de Lima.</p>
+     <p>{webinarEvent.dateLabel}, {webinarEvent.timeLabel}. Fecha de demostración.</p>
     </div>
     <a href="#inscripcion" className={styles.finalButton}>Ir al formulario <ArrowUpRight size={18}/></a>
    </div>

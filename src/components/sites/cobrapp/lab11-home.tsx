@@ -42,15 +42,12 @@ export function Lab11Home(){
       <div className={styles.heroGlow} aria-hidden="true"/>
       <div className={'container '+styles.heroGrid}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>PROYECTO ACADÉMICO UPC · MOVILIDAD UNIVERSITARIA EN LIMA</p>
           <h1 id="inicio-titulo">UniRide, tu viaje <span>compartido al campus.</span></h1>
           <p className={styles.heroLead}>Conectamos estudiantes que recorren caminos similares para organizar viajes al campus, coordinar reservas y compartir los acuerdos de cada recorrido.</p>
           <div className={styles.heroActions}>
             <Link href="#proyecto" className={styles.primary}>Conoce UniRide <ArrowRight size={18}/></Link>
-            <Link href="/demo" className={styles.secondary}>Explorar prototipo</Link>
           </div>
           <p className={styles.disclaimer}>UniRide es un prototipo académico. No opera viajes ni garantiza disponibilidad, seguridad o puntualidad.</p>
-          <nav className={styles.quickLinks} aria-label="Explora Inicio"><Link href="#como-funciona">Cómo funciona</Link><Link href="#recursos">Recursos gratuitos</Link><Link href="#equipo">Nuestro equipo</Link></nav>
         </div>
         <div className={styles.heroMedia}>
           <Image src="/images/estudiante-campus.webp" width={1120} height={630} alt="Ilustración de una estudiante utilizando su teléfono en el campus universitario" priority sizes="(max-width: 780px) 92vw, 48vw"/>
