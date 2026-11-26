@@ -118,27 +118,3 @@
 .formDemoSuccess{display:flex;align-items:flex-start;gap:8px;padding:12px;border-radius:10px;background:#e9f8f0;border:1px solid #b4e5cc;color:#1b6241!important;font-size:12px;line-height:1.6}
 .formDemoSuccess svg{flex:none}
 .formDisclosure{font-size:11px!important;color:#64798a!important;line-height:1.6;margin:0}
-
-/* Rediseño del webinar: contraste, microinteracciones, contador con estado real */
-.page{font-family:var(--font-body);--navy:#06182e;--cyan:#46d8f7}
-.page :is(h1,h2,h3){font-family:var(--font-display);letter-spacing:-.055em}
-.hero{background:radial-gradient(ellipse at 82% 22%,#13adca50,transparent 43%),linear-gradient(112deg,#06172f,#0b3961 73%,#0c4e70);isolation:isolate}
-.hero:before{content:'';position:absolute;inset:0;z-index:-1;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.27'/%3E%3C/svg%3E")}
-.heroCopy h1{font-family:var(--font-display);font-size:clamp(45px,4.9vw,75px);line-height:1.05;letter-spacing:-.064em}
-.signup{border-radius:24px;border:1px solid #99edfb;border-top:5px solid #59d8f5;box-shadow:0 30px 68px #0013276b}
-.signup h2{font-family:var(--font-display)}
-.countGrid{gap:10px}
-.countCell{padding:16px 8px;border-radius:14px;box-shadow:0 9px 22px #0002;transition:border-color .2s,transform .2s;background:#ffffff1d}
-.countCell:hover{transform:translateY(-4px);border-color:#b5f5ff}
-.countCell strong{font-size:clamp(27px,3vw,37px)}
-.countContext{max-width:430px;font-size:11px;line-height:1.5;color:#d4edfb!important;margin:12px 0 0}
-.countFinished{padding:18px 20px;background:#dffcf2;color:#092d38!important;border:1px solid #6ce1c6}
-.countFinished strong{color:#073c43;font-size:15px}
-.countFinished p{color:#276068;font-size:13px;line-height:1.6;margin-top:5px}
-.primaryAction,.finalButton{border-radius:12px;box-shadow:0 8px 25px #056e2970}
-.themeCard,.problemGrid article,.infoCard,.resourceCard,.resultsGrid article{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
-@media(hover:hover){.themeCard:hover,.problemGrid article:hover,.infoCard:hover,.resourceCard:hover,.resultsGrid article:hover{transform:translateY(-5px);box-shadow:0 22px 35px #04254720;border-color:#40d1ed}}
-.themes{background:linear-gradient(140deg,#fff,#f1fafd)}
-.organizerSection{background:linear-gradient(135deg,#d9f6f6,#e8f1fb)}
-.results{background:linear-gradient(135deg,#f7fbfc,#def9f5)}
-@media(prefers-reduced-motion:reduce){.countCell,.themeCard,.problemGrid article,.infoCard,.resourceCard,.resultsGrid article{transition:none}.countCell:hover,.themeCard:hover,.problemGrid article:hover,.infoCard:hover,.resourceCard:hover,.resultsGrid article:hover{transform:none}}

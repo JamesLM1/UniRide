@@ -30,7 +30,7 @@ export function WebinarRegistrationForm(){
     <input type="tel" name="phone" autoComplete="tel" inputMode="tel" maxLength={20} placeholder="Tu número de celular"/>
    </span>
   </label>
-  <button type="submit" className={styles.signupButton}>Probar mi registro <Send size={17}/></button>
+  <button type="submit" className={styles.signupButton}>Quiero registrarme <Send size={17}/></button>
   {validated&&<p className={styles.formDemoSuccess} role="status"><CheckCircle2 size={18} aria-hidden="true"/><span>Datos validados en la demostración. No se ha registrado ni enviado una inscripción real.</span></p>}
   <p className={styles.formDisclosure}>Formulario de demostración. Los datos ingresados no se guardan ni se envían a un servidor.</p>
  </form>;
