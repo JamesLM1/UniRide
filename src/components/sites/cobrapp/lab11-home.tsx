@@ -99,12 +99,13 @@ export function Lab11Home(){
         <div className={styles.sectionHead}>
           <p className={styles.eyebrow}>EXPERIENCIA EN LA APP</p>
           <h2 id="funciona-titulo">De buscar un viaje a <span>llegar al campus.</span></h2>
-          <p>Estas son pantallas ilustrativas del prototipo desarrollado para los laboratorios de UniRide.</p>
+          <p>Estas son pantallas ilustrativas del prototipo desarrollado para los laboratorios de UniRide. Explora las etapas para conocer el recorrido planteado.</p>
         </div>
         <div className={styles.steps}>{steps.map(step=><article className={styles.step} key={step.number}>
           <div className={styles.stepTop}><span>{step.number}</span><h3>{step.title}</h3></div>
           <div className={styles.phoneShot}><Image src={step.image} width={402} height={874} alt={step.alt} sizes="(max-width: 650px) 65vw, 250px"/></div>
           <p>{step.description}</p>
+          <Link href="/demo" className={styles.stepAction} aria-label={`Explorar en la demostración: ${step.title}`}>Explorar esta etapa <ArrowRight size={17}/></Link>
         </article>)}</div>
       </div>
     </section>
@@ -218,7 +219,7 @@ export function Lab11Home(){
           <details><summary>¿Qué hace Ruti?</summary><p>Ruti orienta al usuario sobre el prototipo, preguntas frecuentes y alternativas de traslado. No sustituye la verificación de información ni un servicio de emergencia.</p></details>
           <details><summary>¿Puedo descargar la app?</summary><p>Por ahora puedes abrir el prototipo de Figma y la demostración web. No hay una aplicación publicada en tiendas.</p></details>
         </div>
-        <p className={styles.faqExtra}>¿Tienes otra consulta? <Link href="/contacto">Contáctanos <ArrowRight size={15}/></Link></p>
+        <p className={styles.faqExtra}>¿Tienes otra consulta? <Link href="/contacto">Contáctanos <ArrowRight size={15}/></Link><Link href="#contenido" className={styles.backToTop}>Volver al inicio ↑</Link></p>
       </div>
     </section>
   </main>;
