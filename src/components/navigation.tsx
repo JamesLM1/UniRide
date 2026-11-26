@@ -2,18 +2,20 @@
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import {useState,useEffect,useRef} from 'react';
-import {Menu,X,ArrowUpRight,Download,Languages,ArrowRight,BookOpen,Calculator,MapPin} from 'lucide-react';
+import {Menu,X,ArrowUpRight,Download,Languages,ArrowRight,BookOpen,Calculator,MapPin,Instagram,Youtube,Facebook,Linkedin,Music2} from 'lucide-react';
 const appDownloadURL = 'https://www.figma.com/design/EHMJtEVMXvPWpxgxVKUQ2Z/Untitled?node-id=0-1&t=reCxmGRqsSyahWq7-1';
 const appDownloadLabels = {es: 'Descargar la app', en: 'Download the app', pt: 'Baixar o app'} as const;
+// Rellenar href al recibir las cuentas oficiales. Hasta entonces no mostrar enlaces que no existen.
+const socialPlatforms=[{name:'Instagram',Icon:Instagram,href:null},{name:'TikTok',Icon:Music2,href:null},{name:'YouTube',Icon:Youtube,href:null},{name:'Facebook',Icon:Facebook,href:null},{name:'LinkedIn',Icon:Linkedin,href:null}] as const;
 import {Brand} from './brand';
 
 export function Navigation(){
  const pathname=usePathname();const[open,setOpen]=useState(false);const[languageOpen,setLanguageOpen]=useState(false);const[scrolled,setScrolled]=useState(false);const[progress,setProgress]=useState(0);
  const dialog=useRef<HTMLDialogElement>(null);const menuButton=useRef<HTMLButtonElement>(null);const language=useRef<HTMLDivElement>(null);
  const locale=pathname==='/en'?'en':pathname==='/pt'?'pt':'es';
- const text=locale==='en'?{nav:['Home','Free Test','Blog','Plans','Webinar'],close:'Close menu',menu:'Open menu'}:locale==='pt'?{nav:['Início','Teste gratuito','Blog','Planos','Webinar'],close:'Fechar menu',menu:'Abrir menu'}:{nav:['Inicio','Test gratuito','Blog','Planes','Webinar'],close:'Cerrar menú',menu:'Abrir menú'};
+ const text=locale==='en'?{nav:['Home','Blog','Webinar','Free Test','Plans'],close:'Close menu',menu:'Open menu'}:locale==='pt'?{nav:['Início','Blog','Webinar','Teste gratuito','Planos'],close:'Fechar menu',menu:'Abrir menu'}:{nav:['Inicio','Blog','Webinar','Test gratuito','Planes'],close:'Cerrar menú',menu:'Abrir menú'};
  const home=locale==='es'?'/':'/'+locale;
- const links=[home,'/test-movilidad','/blog','/planes','/webinar'];
+ const links=[home,'/blog','/webinar','/test-movilidad','/planes'];
  const active=(href:string)=>href==='/'||href==='/en'||href==='/pt'?pathname===href:pathname===href||pathname.startsWith(href+'/');
  useEffect(()=>{const update=()=>{const max=document.documentElement.scrollHeight-innerHeight;setScrolled(scrollY>24);setProgress(max>0?scrollY/max:0);};window.addEventListener('scroll',update,{passive:true});update();return()=>window.removeEventListener('scroll',update);},[pathname]);
  useEffect(()=>{setOpen(false);setLanguageOpen(false);},[pathname]);
@@ -23,7 +25,7 @@ export function Navigation(){
  return <>
   <header className={'hybrid-header '+(scrolled?'is-scrolled':'')}><div className="hybrid-shell"><Brand mark={false}/>
    <nav className="hybrid-nav" aria-label="Navegación principal">{links.map((href,i)=><Link key={href} href={href} aria-current={active(href)?'page':undefined}>{text.nav[i]}</Link>)}</nav>
-   <div className="hybrid-actions"><div className="hybrid-language" ref={language}><button className="hybrid-icon" aria-label="Elegir idioma" aria-expanded={languageOpen} aria-controls="idiomas-uniride" onClick={()=>setLanguageOpen(!languageOpen)}><Languages size={17}/><small>{locale.toUpperCase()}</small></button>{languageOpen&&<nav id="idiomas-uniride" className="hybrid-language-panel" aria-label="Idiomas"><Link href="/" hrefLang="es" onClick={()=>setLanguageOpen(false)} aria-current={locale==='es'?'page':undefined}>Español <span>ES</span></Link><Link href="/pt" hrefLang="pt" onClick={()=>setLanguageOpen(false)} aria-current={locale==='pt'?'page':undefined}>Português <span>PT</span></Link><Link href="/en" hrefLang="en" onClick={()=>setLanguageOpen(false)} aria-current={locale==='en'?'page':undefined}>English <span>EN</span></Link></nav>}</div>
+   <div className="hybrid-actions"><div className="hybrid-socials" aria-label="Redes sociales: enlaces pendientes">{socialPlatforms.map(({name,Icon,href})=>href?<a key={name} href={href} title={name} aria-label={name} target="_blank" rel="noopener noreferrer"><Icon size={18}/></a>:<span key={name} title={`${name}: enlace pendiente`} aria-label={`${name}, enlace próximamente`}><Icon size={17}/></span>)}</div><div className="hybrid-language" ref={language}><button className="hybrid-icon" aria-label="Elegir idioma" aria-expanded={languageOpen} aria-controls="idiomas-uniride" onClick={()=>setLanguageOpen(!languageOpen)}><Languages size={17}/><small>{locale.toUpperCase()}</small></button>{languageOpen&&<nav id="idiomas-uniride" className="hybrid-language-panel" aria-label="Idiomas"><Link href="/" hrefLang="es" onClick={()=>setLanguageOpen(false)} aria-current={locale==='es'?'page':undefined}>Español <span>ES</span></Link><Link href="/pt" hrefLang="pt" onClick={()=>setLanguageOpen(false)} aria-current={locale==='pt'?'page':undefined}>Português <span>PT</span></Link><Link href="/en" hrefLang="en" onClick={()=>setLanguageOpen(false)} aria-current={locale==='en'?'page':undefined}>English <span>EN</span></Link></nav>}</div>
     <a href={appDownloadURL} target="_blank" rel="noopener noreferrer" className="hybrid-test" onClick={()=>setLanguageOpen(false)}>{appDownloadLabels[locale]}<Download size={15} aria-hidden="true"/></a>
     <button ref={menuButton} className={'hybrid-menu-toggle '+(open?'is-open':'')} aria-label={open?text.close:text.menu} aria-expanded={open} aria-controls="mobile-menu-uniride" onClick={()=>setOpen(!open)}><span/><span/></button>
    </div><div className="hybrid-progress" style={{transform:'scaleX('+progress+')'}}/>
@@ -31,6 +33,7 @@ export function Navigation(){
   <dialog ref={dialog} id="mobile-menu-uniride" className="hybrid-mobile-menu" aria-label="Menú de UniRide" onCancel={e=>{e.preventDefault();setOpen(false);}} onClick={e=>{if(e.target===e.currentTarget)setOpen(false);}} onClose={()=>setOpen(false)}>
    <div className="hybrid-mobile-top"><Brand mark={false}/><button className="hybrid-icon" onClick={()=>setOpen(false)} aria-label="Cerrar menú"><X size={20}/></button></div>
    <nav aria-label="Navegación móvil">{links.map((href,i)=><Link key={href} href={href} aria-current={active(href)?'page':undefined} onClick={()=>setOpen(false)}>{text.nav[i]}<ArrowRight size={18}/></Link>)}</nav>
+   <div className="hybrid-mobile-socials" aria-label="Redes sociales: enlaces pendientes"><span>Redes sociales</span><div>{socialPlatforms.map(({name,Icon,href})=>href?<a key={name} href={href} title={name} target="_blank" rel="noopener noreferrer"><Icon size={20}/></a>:<span key={name} title={`${name}: enlace pendiente`} aria-label={`${name}, enlace próximamente`}><Icon size={20}/></span>)}</div><small>Enlaces oficiales por añadir</small></div>
    <div className="hybrid-mobile-resources"><Link href="/guia" onClick={()=>setOpen(false)}><BookOpen size={17}/>Guía del plan B</Link><Link href="/calculadora" onClick={()=>setOpen(false)}><Calculator size={17}/>Calculadora</Link><Link href="/explorar" onClick={()=>setOpen(false)}><MapPin size={17}/>Explorar campus</Link><Link href="/descargas" onClick={()=>setOpen(false)}><Download size={17}/>Descargas</Link></div>
    <div className="hybrid-mobile-languages"><Link href="/" onClick={()=>setOpen(false)}>ES</Link><Link href="/pt" onClick={()=>setOpen(false)}>PT</Link><Link href="/en" onClick={()=>setOpen(false)}>EN</Link><small>Conectamos tu ruta.</small></div>
   </dialog>
