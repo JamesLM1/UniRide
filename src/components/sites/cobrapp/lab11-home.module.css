@@ -159,3 +159,40 @@
     mask-image:linear-gradient(90deg,transparent 0%,transparent 25%,#000 45%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 11%,#000 85%,transparent 100%);
   }
 }
+
+/* Mejoras transversales de experiencia: señales de interacción claras y consistentes. */
+.home section[id]{scroll-margin-top:92px}
+.home :is(a,summary):focus-visible{outline:3px solid #72e8ff;outline-offset:4px}
+.home :is(.proposalMain,.proposalSide article,.missionCard,.valueCard,.step,.functionCard,.cases article){
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease,background-color .24s ease;
+}
+@media(hover:hover){
+  .home :is(.proposalMain,.proposalSide article,.missionCard,.valueCard,.step,.functionCard,.cases article):hover{
+    transform:translateY(-4px);border-color:#39b7e5;box-shadow:0 16px 35px #0003;
+  }
+  .home .phoneShot img{transition:transform .3s ease,filter .3s ease}
+  .home .step:hover .phoneShot img{transform:scale(1.035);filter:drop-shadow(0 20px 19px #0008)}
+}
+.stepAction{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin:0 auto 3px;padding:11px 16px;border-radius:9px;border:1px solid #4cb8eb;background:#0d4068;color:#d9f6ff!important;font-size:13px;font-weight:750;text-decoration:none;transition:background .2s ease,transform .2s ease}
+.stepAction:hover{background:#12628c;transform:translateY(-2px)}
+.backToTop{margin-left:auto;font-size:13px}
+.home .faqs summary{padding:2px 0;transition:color .2s ease}
+.home .faqs summary:hover{color:#6ee4ff}
+.home .faqs details[open]{background:#113354;box-shadow:inset 3px 0 #53d4fa}
+.home .faqExtra{flex-wrap:wrap}
+.home .downloadHowStep,.home .downloadFeatureRail span{transition:background .2s ease}
+.home .downloadFeatureRail span:hover{background:#2c739044}
+.home .downloadHowStep:hover{background:#c5f0ff}
+.home .qrCard{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.home .qrCard:hover{transform:translateY(-3px);box-shadow:0 12px 24px #00152b90}
+.home .functionCard>a:focus-visible,.home .stepAction:focus-visible{outline:3px solid #72e8ff;outline-offset:3px}
+@supports(animation-timeline:view()){
+  @media(prefers-reduced-motion:no-preference){
+    .home :is(.sectionHead,.proposalGrid,.missionGrid,.valuesGrid,.steps,.videoGrid,.functionsGrid,.cases,.downloadLanding,.downloadFeatureRail,.downloadHow){
+      animation:uniride-section-enter .7s ease-out both;animation-timeline:view();animation-range:entry 0% entry 28%;
+    }
+    @keyframes uniride-section-enter{from{opacity:.3;translate:0 18px}to{opacity:1;translate:0 0}}
+  }
+}
+@media(max-width:760px){.home section[id]{scroll-margin-top:80px}.backToTop{margin-left:0}.home :is(.proposalMain,.proposalSide article,.missionCard,.valueCard,.step,.functionCard,.cases article):hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.home :is(.proposalMain,.proposalSide article,.missionCard,.valueCard,.step,.functionCard,.cases article,.stepAction,.qrCard,.phoneShot img){transition:none!important;animation:none!important;transform:none!important}}
