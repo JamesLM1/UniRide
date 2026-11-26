@@ -8,6 +8,8 @@ import {
 import {TeamSection} from './team-section';
 import styles from './lab11-home.module.css';
 
+const qrRows = ["111111100000011101110011001111111","100000100110111110100111101000001","101110100110110110101001101011101","101110100010011111101010001011101","101110100111111001111011001011101","100000101110101110010110101000001","111111101010101010101010101111111","000000000011001111100110100000000","100101101100111000000101110100000","000100010011110011001100111100011","111011100000111010110100101110101","100001000101010110111111001011010","000011111000001010111010111001010","011100010110101101101110111011011","001100100000100111010001111010110","001001001111110011001110001000010","110110110000011101001100001011010","101110000110110011000001100101010","110010111110000011001100001000101","101001001101011000011011011100000","011101110101110001001000010000011","000110011000111101010000111001011","111100111110111010110010001110101","011110010111101100111110001011010","101110101111110001000100111111010","000000001111110001011111100011001","111111100111010011101010101011110","100000101001101011101110100010000","101110100101101100101000111111001","101110101000110110110010101010010","101110100101101110011001000010101","100000100001101001011101100001000","111111101011011110110100111011010"];
+
 const figmaURL = 'https://www.figma.com/design/EHMJtEVMXvPWpxgxVKUQ2Z/Untitled?node-id=0-1&t=reCxmGRqsSyahWq7-1';
 
 const values = [
@@ -150,19 +152,61 @@ export function Lab11Home(){
       </div>
     </section>
 
-    <section className={styles.downloadSection} aria-labelledby="descarga-titulo">
-      <div className={'container '+styles.downloadGrid}>
-        <div>
-          <p className={styles.eyebrow}>CONOCE LA EXPERIENCIA MÓVIL</p>
-          <h2 id="descarga-titulo">UniRide va <span>contigo al campus.</span></h2>
-          <p>Explora las pantallas de nuestra aplicación, conoce sus flujos y descubre cómo está diseñada la movilidad compartida universitaria.</p>
-          <div className={styles.downloadActions}>
-            <a href={figmaURL} target="_blank" rel="noopener noreferrer" className={styles.primary}>Ver prototipo móvil <Download size={18}/></a>
-            <Link href="/demo" className={styles.secondary}>Abrir demo web <ArrowRight size={18}/></Link>
+    <section id="descargar-app" className={styles.downloadSection} aria-labelledby="descarga-titulo">
+      <div className="container">
+        <div className={styles.downloadLanding}>
+          <div className={styles.downloadIntro}>
+            <p className={styles.eyebrow}>APP UNIRIDE · EXPERIENCIA MÓVIL</p>
+            <h2 id="descarga-titulo">Tu camino al campus, <span>en tu celular.</span></h2>
+            <p>Descubre cómo UniRide ayuda a organizar viajes compartidos, buscar rutas compatibles y coordinar reservas entre estudiantes.</p>
+            <ul className={styles.downloadBenefits}>
+              <li><CheckCircle2 size={20}/> Rutas y horarios universitarios</li>
+              <li><CheckCircle2 size={20}/> Solicitudes y reservas</li>
+              <li><CheckCircle2 size={20}/> Comunidad estudiantil</li>
+              <li><CheckCircle2 size={20}/> Alertas y acompañamiento de Ruti</li>
+            </ul>
+            <a href={figmaURL} target="_blank" rel="noopener noreferrer" className={styles.primary}>Explorar el prototipo <ArrowRight size={18}/></a>
           </div>
-          <p className={styles.disclaimer}>Actualmente es un prototipo académico: no hay una aplicación oficial disponible en Google Play o App Store.</p>
+          <div className={styles.downloadArtwork}>
+            <div className={styles.downloadCampus}>
+              <Image src="/images/estudiante-campus.webp" fill sizes="(max-width: 900px) 90vw, 490px" alt="Ilustración de una estudiante universitaria utilizando su teléfono cerca del campus"/>
+            </div>
+            <div className={styles.tiltPhone} aria-label="Vista del prototipo de UniRide en un teléfono inclinado">
+              <div className={styles.tiltScreen}>
+                <Image src="/images/prototipo-inicio.webp" fill sizes="(max-width: 650px) 165px, 245px" alt="Pantalla inicial del prototipo móvil UniRide"/>
+              </div>
+            </div>
+            <span className={styles.artworkPin}><MapPin size={20}/> Tu ruta al campus</span>
+          </div>
+          <aside className={styles.downloadStores} aria-label="Disponibilidad de la aplicación">
+            <h3>¡Conoce UniRide <span>ahora!</span></h3>
+            <p>Disponible como prototipo interactivo</p>
+            <div className={styles.storeBadge} aria-label="Google Play, próximamente"><span className={styles.playMark}>▶</span><span><small>Próximamente en</small><strong>Google Play</strong></span></div>
+            <div className={styles.storeBadge} aria-label="App Store, próximamente"><span className={styles.appleMark}>●</span><span><small>Próximamente en</small><strong>App Store</strong></span></div>
+            <a href="https://uniride-movilidad.vercel.app/descargas" className={styles.qrCard}>
+              <svg viewBox="0 0 41 41" role="img" aria-label="Código QR para abrir la página de UniRide en el teléfono" shapeRendering="crispEdges">
+                <rect width="41" height="41" fill="#fff"/>
+                {qrRows.map((line,y)=>Array.from(line).map((c,x)=>c==='1'?<rect key={x+'-'+y} x={x+4} y={y+4} width="1" height="1" fill="#051b3f"/>:null))}
+              </svg>
+              <span><strong>Escanea el QR</strong><small>y abre nuestra demo desde tu celular</small></span>
+            </a>
+            <p className={styles.downloadDisclosure}>Proyecto académico en desarrollo. Aún no se encuentra publicado en las tiendas de aplicaciones.</p>
+          </aside>
         </div>
-        <div className={styles.downloadPreview}><Image src="/images/prototipo-inicio.webp" width={402} height={874} alt="Pantalla inicial del prototipo móvil UniRide" sizes="(max-width: 760px) 62vw, 260px"/></div>
+        <div className={styles.downloadFeatureRail} aria-label="Beneficios de UniRide">
+          <span><Route size={25}/> Planificación de rutas</span>
+          <span><Users size={25}/> Comunidad</span>
+          <span><Wallet size={25}/> Ahorro compartido</span>
+          <span><CalendarDays size={25}/> Reservas</span>
+          <span><ShieldCheck size={25}/> Información clara</span>
+        </div>
+        <div className={styles.downloadHow}>
+          <div><h3>Empezar es <span>muy fácil</span></h3><p>Por ahora, prueba la experiencia en Figma o en nuestra demo web.</p></div>
+          <div className={styles.downloadHowStep}><b>1</b><span>Abre el prototipo móvil</span></div>
+          <div className={styles.downloadHowStep}><b>2</b><span>Explora las pantallas de UniRide</span></div>
+          <div className={styles.downloadHowStep}><b>3</b><span>Conoce y simula los viajes</span></div>
+          <Link href="/demo" className={styles.howLink}>Abrir demo <ArrowRight size={17}/></Link>
+        </div>
       </div>
     </section>
 
