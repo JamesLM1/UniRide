@@ -168,13 +168,15 @@ export function Lab11Home(){
             </ul>
           </div>
           <div className={styles.downloadArtwork}>
-            <Image
-              src="/images/uniride-descarga-estudiante.webp"
-              width={430} height={353}
-              alt="Estudiante universitaria sonriente con su celular junto a un iPhone inclinado que muestra el prototipo UniRide sobre un mapa de rutas"
-              className={styles.downloadHeroScene}
-              sizes="(max-width: 760px) 90vw, (max-width: 1180px) 45vw, 36vw"
-            />
+            <div className={styles.downloadStudentPhoto}>
+              <Image src="/images/estudiante-campus.webp" fill alt="Estudiante universitaria usando su celular junto al campus" sizes="(max-width: 760px) 85vw, 480px"/>
+            </div>
+            <div className={styles.downloadPhoneFrame}>
+              <div className={styles.downloadPhoneNotch} aria-hidden="true"/>
+              <div className={styles.downloadPhoneScreen}>
+                <Image src="/images/prototipo-inicio.webp" fill alt="Pantalla del prototipo móvil UniRide" sizes="(max-width: 760px) 180px, 240px"/>
+              </div>
+            </div>
           </div>
           <aside className={styles.downloadStores} aria-label="Opciones para conocer UniRide">
             <h3>¡Descárgala <span>ahora!</span></h3>
