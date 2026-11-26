@@ -76,3 +76,57 @@
 @media(max-width:1160px){.downloadLanding{grid-template-columns:minmax(0,.95fr) minmax(0,1fr)}.downloadStores{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;align-items:center}.downloadStores h3,.downloadStores>p:first-of-type,.downloadDisclosure{grid-column:1/-1}.downloadStores h3{margin-top:8px}.storeBadge{margin:0}.qrCard{grid-column:1/-1;justify-content:center;max-width:430px;margin:6px auto 0}.downloadHow{grid-template-columns:1.3fr repeat(3,1fr)}.howLink{grid-column:1/-1;justify-content:center;justify-self:stretch}}
 @media(max-width:760px){.downloadSection{padding:60px 0}.downloadLanding{grid-template-columns:1fr}.downloadIntro h2{max-width:18ch}.downloadArtwork{max-width:520px;width:100%;margin:auto}.downloadStores{grid-column:auto}.downloadFeatureRail{display:grid;grid-template-columns:1fr 1fr}.downloadHow{grid-template-columns:1fr 1fr}.downloadHow>div:first-child,.howLink{grid-column:1/-1}}
 @media(max-width:460px){.downloadArtwork{height:365px}.tiltPhone{border-radius:26px;padding:6px}.tiltScreen{border-radius:20px}.downloadCampus{border-radius:60px 24px 30px 16px}.downloadStores{grid-template-columns:1fr}.downloadStores h3,.downloadStores>p:first-of-type,.downloadDisclosure,.qrCard{grid-column:1}.downloadFeatureRail{grid-template-columns:1fr 1fr;padding:15px}.downloadFeatureRail span{font-size:11px}.downloadFeatureRail svg{width:19px}.downloadHow{padding:18px 14px;gap:14px}.downloadHowStep{font-size:11px}.downloadHowStep b{width:29px;height:29px}.qrCard svg{width:95px;height:95px}}
+
+/* Lab 11 · versión corregida de la sección Descargar, a partir de la referencia del usuario */
+.downloadSection{background:radial-gradient(circle at 46% 25%,#08668eaa,transparent 44%),linear-gradient(120deg,#031c3c,#063961 63%,#061d41);padding:58px 0 55px}
+.downloadContainer{max-width:1500px}
+.downloadLanding{grid-template-columns:minmax(0,1.02fr) minmax(0,1.32fr) minmax(265px,.85fr);gap:clamp(7px,1.4vw,22px);align-items:center}
+.downloadKicker{display:inline-flex;color:#fff!important;background:#009cc0;padding:7px 18px;border-radius:30px;font-size:13px;font-weight:850;letter-spacing:.08em;margin-bottom:15px}
+.downloadIntro h2{max-width:13ch;font-size:clamp(38px,4.3vw,67px);line-height:1.01;margin-bottom:18px}
+.downloadIntro h2 span{display:block;color:#14dcf3;font-size:1.25em}
+.downloadIntro>p:not(.downloadKicker){color:#f1f8ff;font-weight:550;font-size:clamp(14px,1.25vw,18px);line-height:1.45}
+.downloadBenefits{gap:10px;margin:20px 0 0}
+.downloadBenefits li{font-size:clamp(12px,1.1vw,16px);font-weight:760;line-height:1.3;gap:11px}
+.downloadBenefits svg{color:#83e94e;fill:#278e1c;stroke:#fff}
+.downloadArtwork{height:clamp(360px,36vw,545px);width:100%;position:relative;overflow:visible;isolation:isolate}
+.downloadStudentPhoto{position:absolute;inset:10% 13% 0 -3%;overflow:hidden;border-radius:46% 14% 17% 10%;box-shadow:0 17px 35px #001a377a}
+.downloadStudentPhoto img{object-fit:cover;object-position:57% center}
+.downloadArtwork:after{content:'';position:absolute;left:-3%;bottom:0;height:10%;width:105%;border-radius:100% 70% 0 0;background:linear-gradient(110deg,#12a3d6,#065b8b);pointer-events:none;z-index:3}
+.downloadPhoneFrame{position:absolute;right:0;top:0;height:96%;width:49%;max-width:277px;transform:rotate(9deg);border:3px solid #b9d5e8;border-radius:38px;padding:8px;background:linear-gradient(120deg,#34475b,#040e1d 42%,#536677 68%,#071320);z-index:2;box-shadow:10px 18px 35px #001020af}
+.downloadPhoneNotch{position:absolute;top:16px;left:50%;transform:translateX(-50%);height:16px;width:32%;background:#010711;border-radius:20px;z-index:4}
+.downloadPhoneScreen{position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;background:#062244}
+.downloadPhoneScreen img{object-fit:fill}
+.downloadStores{border:1px solid #19a5d4;border-radius:22px;padding:22px 17px 16px;background:#05284b91;align-self:center}
+.downloadStores h3{font-size:clamp(23px,2.3vw,35px);margin-bottom:7px}
+.downloadStores h3 span{color:#34e3f4}
+.downloadStores>p:first-of-type{font-size:17px;font-weight:750;color:#fff;margin-bottom:17px}
+.storeBadge{min-height:75px;border:1px solid #b3cadd;border-radius:16px}
+.storeBadge strong{font-size:clamp(18px,1.6vw,24px)}
+.playMark{font-size:29px}.appleMark{font-size:34px}
+.qrCard{background:#07345c;border-radius:18px;margin-top:15px}
+.qrCard>svg{background:white;padding:5px;border-radius:10px;box-sizing:content-box;width:106px;height:106px;max-width:44%;flex-shrink:0}
+.qrCard strong{display:inline-block;color:#06283c;background:#96ed62;border-radius:999px;padding:9px 10px;font-size:13px}
+.qrCard small{font-size:12px;margin-top:7px}
+.downloadDisclosure{font-size:10px!important;margin-top:12px}
+.downloadDemoLink{display:inline-flex;align-items:center;justify-content:center;gap:7px;color:#8ceeff!important;font-size:12px;font-weight:750;margin-top:5px;text-decoration:underline}
+.downloadFeatureRail{margin:18px 0 20px;background:linear-gradient(100deg,#073459,#06294c);padding:17px;border:1px solid #2a8ac0;border-radius:25px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
+.downloadFeatureRail span{display:flex;justify-content:center;gap:11px;color:#fff;font-size:clamp(12px,1.15vw,16px);line-height:1.2;font-weight:800;padding:7px;border-right:1px solid #bddaf45c}
+.downloadFeatureRail span:last-child{border:0}
+.downloadFeatureRail svg{width:35px;height:35px;color:#28e2f4}
+.downloadHow{grid-template-columns:1.28fr repeat(3,1fr);gap:0;padding:18px 21px;background:linear-gradient(100deg,#dff8ff,#ecfbff);border:1px solid #8cdbf9;border-radius:25px;color:#0b2551}
+.downloadHowTitle{display:flex;align-items:center;justify-content:space-around;gap:9px;padding-right:13px}
+.downloadHowTitle h3{color:#081d47;font-size:clamp(21px,2.1vw,31px);line-height:1.1;margin:0}
+.downloadHowTitle h3 span{color:#0aa5d2}
+.downloadHowTitle svg{color:#0bd0ee;flex:none}
+.downloadHowStep{border-left:1px solid #28b9da;padding:8px clamp(9px,1vw,23px);font-size:clamp(11px,1.25vw,17px);gap:11px;justify-content:center}
+.downloadHowStep b{width:39px;height:39px;font-size:19px;background:#32bd17;flex:none}
+.downloadHowStep>svg{color:#06a6d5;flex:none}
+.downloadHowStep strong{line-height:1.2}
+.storeGlyphs{display:flex;align-items:center;gap:12px;margin-top:5px}
+.storeGlyphs .appleMark{color:#088ad3;font-size:25px}
+.storeGlyphs .playMark{font-size:25px}
+.downloadStepsNote{font-size:11px;color:#c6eaff!important;text-align:center;margin:12px 0 0}
+.downloadStepsNote a{color:#74e9ff!important;text-decoration:underline}
+@media(max-width:1180px){.downloadLanding{grid-template-columns:1fr 1fr}.downloadStores{grid-column:1/-1;max-width:560px;justify-self:center;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px 12px}.downloadStores h3,.downloadStores>p:first-of-type,.qrCard,.downloadDisclosure,.downloadDemoLink{grid-column:1/-1}.downloadStores>p:first-of-type{margin:0}.qrCard{margin:10px auto 0;width:min(100%,400px)}.downloadHow{grid-template-columns:1.1fr repeat(3,1fr)}}
+@media(max-width:760px){.downloadLanding{grid-template-columns:1fr}.downloadIntro h2{max-width:100%;font-size:clamp(38px,10vw,65px)}.downloadArtwork{max-width:560px;width:100%;height:450px;margin:12px auto}.downloadStores{grid-column:1;max-width:560px}.downloadFeatureRail{grid-template-columns:repeat(2,1fr)}.downloadFeatureRail span{border-right:0;border-bottom:1px solid #d4e7f438;justify-content:flex-start}.downloadFeatureRail span:last-child{grid-column:1/-1}.downloadHow{grid-template-columns:1fr}.downloadHowTitle{padding:5px 2px 16px;justify-content:space-between}.downloadHowStep{border-left:0;border-top:1px solid #62bdda;padding:13px 7px;justify-content:flex-start}}
+@media(max-width:460px){.downloadArtwork{height:355px}.downloadPhoneFrame{border-radius:25px;padding:6px}.downloadPhoneScreen{border-radius:19px}.downloadStudentPhoto{border-radius:24% 10% 10% 8%}.downloadStores{grid-template-columns:1fr}.downloadStores h3,.downloadStores>p:first-of-type,.qrCard,.downloadDisclosure,.downloadDemoLink{grid-column:1}.downloadFeatureRail{grid-template-columns:1fr 1fr}.downloadFeatureRail span{font-size:12px}.downloadHow{padding:15px 17px}}
