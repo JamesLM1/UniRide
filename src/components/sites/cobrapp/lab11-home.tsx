@@ -111,14 +111,14 @@ export function Lab11Home(){
     <section className={styles.videoSection} aria-labelledby="video-titulo">
       <div className={'container '+styles.videoGrid}>
         <div className={styles.videoWrap}>
-          <iframe title="Video externo de referencia sobre carpooling universitario - Universidad de Lima" loading="lazy" src="https://www.youtube-nocookie.com/embed/MSpZgFHAwXI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen/>
+          <iframe title="Video externo de referencia U-Carpool de la Pontificia Universidad Católica del Perú" loading="lazy" src="https://www.youtube-nocookie.com/embed/5J72BkzL--s" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen/>
         </div>
         <div className={styles.videoCopy}>
           <span className={styles.roundIcon}><Play size={24}/></span>
           <p className={styles.eyebrow}>VIDEO DE PRESENTACIÓN</p>
           <h2 id="video-titulo">La movilidad compartida empieza con <span>una buena conexión.</span></h2>
           <p>Este espacio está reservado para el video oficial de presentación de UniRide, siguiendo el ejemplo del Laboratorio 11.</p>
-          <p className={styles.videoNote}>Video temporal de referencia: «UnCo Carpool», Universidad de Lima. Es un proyecto externo, no una demostración de UniRide.</p>
+          <p className={styles.videoNote}>Video temporal de referencia: «U-Carpool», PUCP. Es un proyecto externo, no una demostración de UniRide.</p>
         </div>
       </div>
     </section>
