@@ -197,8 +197,6 @@
 @media(max-width:760px){.home section[id]{scroll-margin-top:80px}.backToTop{margin-left:0}.home :is(.proposalMain,.proposalSide article,.missionCard,.valueCard,.step,.functionCard,.cases article):hover{transform:none}}
 @media(prefers-reduced-motion:reduce){.home :is(.proposalMain,.proposalSide article,.missionCard,.valueCard,.step,.functionCard,.cases article,.stepAction,.qrCard,.phoneShot img){transition:none!important;animation:none!important;transform:none!important}}
 /* Inicio fusionado: composición publicada y recursos del recorrido anterior. */
-.quickLinks{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:25px;padding-top:20px;border-top:1px solid #66b2d34d}
-.home .quickLinks a{font-size:12px;color:#a5e8ff;text-decoration:underline;text-underline-offset:5px;min-height:30px;display:inline-flex;align-items:center}
 .resourcesSection{padding:clamp(60px,6vw,88px) 0;background:#edf7fa;color:#102b47}
 .resourcesSection .sectionHead h2{color:#102b47}.resourcesSection .sectionHead h2 span{color:#087095}
 .home .resourcesSection .eyebrow{color:#18637c}.home .resourcesSection p{color:#405d72}
@@ -228,4 +226,4 @@
 .home :is(button,a,summary):focus-visible{outline:3px solid #72e8ff;outline-offset:4px}
 @media(hover:hover){.resourceCard:hover{border-color:#72b7cc;box-shadow:0 10px 22px #15374a12}.resourceCard :is(a,button):hover{text-decoration:underline;text-underline-offset:4px}}
 @media(max-width:900px){.resourcesGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.resourcesGrid{grid-template-columns:1fr}.resourceCard{padding:24px}.quickLinks{gap:8px 18px}.home .bottomSections :global(#casos-de-uso article){min-height:0}.home .bottomSections :global(#preguntas-frecuentes details){padding-inline:17px}}
+@media(max-width:600px){.resourcesGrid{grid-template-columns:1fr}.resourceCard{padding:24px}.home .bottomSections :global(#casos-de-uso article){min-height:0}.home .bottomSections :global(#preguntas-frecuentes details){padding-inline:17px}}
