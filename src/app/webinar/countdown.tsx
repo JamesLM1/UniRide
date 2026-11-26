@@ -20,19 +20,17 @@ export function WebinarCountdown(){
   const interval=window.setInterval(tick,1000);
   return ()=>window.clearInterval(interval);
  },[]);
- return <div className={styles.countdown} aria-label="Cuenta regresiva para el webinar">
-  {remaining!==null&&remaining<=0
-   ?<p className={styles.countFinished} role="status">La fecha programada del webinar ya llegó. Consulta el formulario para conocer novedades.</p>
-   :<>
-    <p className={styles.countLabel}>El webinar comienza en</p>
-    <div className={styles.countGrid} role="timer" aria-live="off">
-     {(remaining===null?timeParts(0):timeParts(remaining)).map(({name,value})=>
-      <div key={name} className={styles.countCell}>
-       <strong>{remaining===null?'--':String(value).padStart(2,'0')}</strong>
-       <span>{name}</span>
-      </div>
-     )}
-    </div>
-   </>}
- </div>;
+ return <div className={styles.countdown} aria-label="Cuenta regresiva del webinar">
+   <p className={styles.countLabel}>{remaining!==null&&remaining<=0?'Cuenta regresiva del webinar finalizado':'El webinar comienza en'}</p>
+   <div className={styles.countGrid} role="timer" aria-live="off">
+    {(remaining===null?timeParts(0):timeParts(remaining)).map(({name,value})=>
+     <div key={name} className={styles.countCell}>
+      <strong>{remaining===null?'--':String(value).padStart(2,'0')}</strong>
+      <span>{name}</span>
+     </div>
+    )}
+   </div>
+   {remaining!==null&&remaining<=0&&
+    <p className={styles.countFinished} role="status">El webinar del 19 de noviembre de 2026 ya finalizó. El contador se mantiene visible en cero como referencia del evento; no hay una nueva fecha anunciada.</p>}
+  </div>;
 }
